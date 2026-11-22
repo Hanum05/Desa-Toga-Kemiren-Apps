@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Desa Toga Kemiren | Digital Ethnobotanical Platform</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>DESA TOGA KEMIREN — Ekosistem Digital Etnobotani & Ekonomi Hijau</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -11,287 +11,1921 @@
             theme: {
                 extend: {
                     colors: {
-                        brand: {
+                        osing: {
                             50: '#f0fdf4',
                             100: '#dcfce7',
+                            200: '#bbf7d0',
                             500: '#22c55e',
                             600: '#16a34a',
                             700: '#15803d',
+                            800: '#166534',
                             900: '#14532d',
+                            950: '#052e16',
+                        },
+                        kunir: {
+                            50: '#fffbeb',
+                            100: '#fef3c7',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                            700: '#b45309',
                         }
                     },
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
+                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        .feature-card:hover { transform: translateY(-5px); transition: all 0.3s ease; }
+        body {
+            font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        /* Page Transition */
+        .view-section {
+            animation: fadeSlideIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        @keyframes fadeSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Map Pin Pulse */
+        @keyframes pingSlow {
+            75%, 100% {
+                transform: scale(1.8);
+                opacity: 0;
+            }
+        }
+        .animate-ping-slow {
+            animation: pingSlow 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+        }
+        /* Safe Area Padding for Mobile Bottom Bar */
+        .pb-safe {
+            padding-bottom: calc(5.25rem + env(safe-area-inset-bottom));
+        }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800">
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-osing-200 selection:text-osing-950">
 
-    <!-- Navigation -->
-    <nav class="bg-white/90 backdrop-blur-md fixed w-full z-50 top-0 shadow-sm border-b border-slate-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16 items-center">
-                <div class="flex-shrink-0 flex items-center gap-2">
-                    <i class="fa-solid fa-leaf text-brand-600 text-2xl"></i>
-                    <span class="font-bold text-xl text-brand-900">TOGA KEMIREN</span>
+    <!-- APP SHELL WRAPPER -->
+    <div class="flex min-h-screen w-full overflow-x-hidden">
+
+        <!-- =========================================================
+             DESKTOP PERSISTENT SIDEBAR (Hidden on Mobile < lg)
+        ========================================================= -->
+        <aside class="hidden lg:flex lg:w-72 lg:flex-col lg:fixed lg:inset-y-0 bg-osing-950 text-white z-40 shadow-xl">
+            <!-- Brand Header -->
+            <div class="flex items-center gap-3.5 px-6 py-6 border-b border-osing-800/70">
+                <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-osing-500 to-kunir-500 flex items-center justify-center text-white shadow-lg shrink-0">
+                    <i class="fa-solid fa-seedling text-xl"></i>
                 </div>
-                <div class="hidden md:flex space-x-6 text-sm font-medium">
-                    <a href="#beranda" class="text-brand-600 hover:text-brand-700">Beranda</a>
-                    <a href="#unggulan" class="text-slate-600 hover:text-brand-600">Inovasi</a>
-                    <a href="#fitur" class="text-slate-600 hover:text-brand-600">Fitur Ekosistem</a>
-                    <a href="#menu" class="text-slate-600 hover:text-brand-600">Struktur Menu</a>
+                <div>
+                    <h1 class="font-extrabold text-lg tracking-tight leading-tight text-white">DESA TOGA<br><span class="text-kunir-400">KEMIREN</span></h1>
                 </div>
             </div>
+
+            <!-- Quick Global Search in Sidebar -->
+            <div class="px-4 pt-5 pb-2">
+                <div class="relative">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3 text-osing-400 text-sm"></i>
+                    <input type="text" id="desktopQuickSearch" onkeyup="handleGlobalSearch(this.value)" placeholder="Cari tanaman, senyawa, produk..." 
+                        class="w-full bg-osing-900/80 border border-osing-800 text-sm text-white placeholder-osing-400 rounded-xl pl-9 pr-3 py-2.5 focus:outline-none focus:border-kunir-500 transition">
+                </div>
+            </div>
+
+            <!-- Navigation Links -->
+            <nav id="desktopNav" class="flex-1 px-4 py-3 space-y-1 overflow-y-auto no-scrollbar">
+                <!-- Populated dynamically by JS -->
+            </nav>
+
+            <!-- Village Status Card -->
+            <div class="p-4 m-4 rounded-2xl bg-osing-900/90 border border-osing-800">
+                <div class="flex items-center gap-2 text-xs font-semibold text-kunir-400 mb-1">
+                    <span class="w-2 h-2 rounded-full bg-osing-400 animate-pulse"></span>
+                    Desa Adat Kemiren, Banyuwangi
+                </div>
+                <p class="text-xs text-osing-200 leading-relaxed">
+                    Ekosistem Etnobotani, Sains Fitokimia & Ekonomi Hijau Masyarakat Osing.
+                </p>
+            </div>
+        </aside>
+
+        <!-- =========================================================
+             MAIN CONTENT CONTAINER
+        ========================================================= -->
+        <div class="flex-1 flex flex-col lg:pl-72 w-full min-w-0">
+
+            <!-- MOBILE APP TOP BAR (Hidden on Desktop >= lg) -->
+            <header class="lg:hidden sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-slate-200/80 px-4 py-3 flex items-center justify-between shadow-sm">
+                <div class="flex items-center gap-2.5" onclick="navigateTo('beranda')">
+                    <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-osing-700 to-osing-900 flex items-center justify-center text-white shadow">
+                        <i class="fa-solid fa-seedling text-base"></i>
+                    </div>
+                    <div>
+                        <div class="font-extrabold text-sm text-osing-950 leading-none">DESA TOGA KEMIREN</div>
+                        <div class="text-[11px] font-medium text-osing-700 mt-0.5" id="mobileHeaderSubtitle">Beranda Ekosistem</div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button onclick="navigateTo('pasar')" class="relative p-2.5 rounded-xl bg-slate-100 text-slate-700 hover:bg-osing-50 hover:text-osing-700 transition" aria-label="Keranjang Belanja">
+                        <i class="fa-solid fa-bag-shopping text-base"></i>
+                        <span id="mobileCartBadge" class="hidden absolute -top-1 -right-1 bg-kunir-600 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">0</span>
+                    </button>
+                    <button onclick="toggleMobileDrawer(true)" class="p-2.5 rounded-xl bg-osing-50 text-osing-800 font-semibold text-xs flex items-center gap-1.5 border border-osing-200">
+                        <i class="fa-solid fa-grid-2"></i>
+                        <span>8 Menu</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- DESKTOP TOP UTILITY BAR -->
+            <header class="hidden lg:flex sticky top-0 z-30 bg-white/90 backdrop-blur-md border-b border-slate-200/80 px-8 py-3.5 items-center justify-between">
+                <div>
+                    <div class="flex items-center gap-2 text-xs font-semibold text-osing-700 uppercase tracking-wider" id="desktopBreadcrumb">
+                        Platform Terintegrasi • Beranda
+                    </div>
+                    <h2 class="text-xl font-bold text-slate-900" id="desktopPageTitle">Beranda Desa TOGA Kemiren</h2>
+                </div>
+                <div class="flex items-center gap-3">
+                    <button onclick="openQrSimulator()" class="px-4 py-2 rounded-xl bg-osing-50 hover:bg-osing-100 text-osing-800 border border-osing-200 text-sm font-semibold flex items-center gap-2 transition">
+                        <i class="fa-solid fa-qrcode text-osing-700"></i>
+                        <span>Simulasi Scan QR</span>
+                    </button>
+                    <button onclick="navigateTo('pasar')" class="relative px-4 py-2 rounded-xl bg-osing-800 hover:bg-osing-900 text-white text-sm font-semibold flex items-center gap-2 shadow-sm transition">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        <span>Pasar Osing</span>
+                        <span id="desktopCartBadge" class="bg-kunir-500 text-osing-950 text-xs font-extrabold px-2 py-0.5 rounded-full">0</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- DYNAMIC APP VIEWPORT -->
+            <main id="appViewport" class="flex-1 px-4 sm:px-6 lg:px-8 py-5 lg:py-8 pb-safe lg:pb-12 max-w-7xl w-full mx-auto">
+                <!-- Content rendered dynamically via JS -->
+            </main>
+
+        </div>
+    </div>
+
+    <!-- =========================================================
+         MOBILE BOTTOM NAVIGATION BAR (Hidden on Desktop >= lg)
+    ========================================================= -->
+    <nav class="lg:hidden fixed bottom-0 inset-x-0 z-30 bg-white/95 backdrop-blur-md border-t border-slate-200 px-2 py-1.5 shadow-[0_-4px_20px_rgba(0,0,0,0.05)]">
+        <div class="grid grid-cols-5 gap-1 items-center">
+            <button onclick="navigateTo('beranda')" data-nav="beranda" class="mobile-tab flex flex-col items-center justify-center py-1.5 rounded-xl text-osing-700">
+                <i class="fa-solid fa-house text-lg mb-0.5"></i>
+                <span class="text-[10px] font-bold">Beranda</span>
+            </button>
+            <button onclick="navigateTo('osingpedia')" data-nav="osingpedia" class="mobile-tab flex flex-col items-center justify-center py-1.5 rounded-xl text-slate-500">
+                <i class="fa-solid fa-book-medical text-lg mb-0.5"></i>
+                <span class="text-[10px] font-semibold">Osingpedia</span>
+            </button>
+            <button onclick="navigateTo('jelajah')" data-nav="jelajah" class="mobile-tab flex flex-col items-center justify-center py-1.5 rounded-xl text-slate-500">
+                <div class="w-10 h-10 -mt-5 rounded-2xl bg-gradient-to-br from-osing-600 to-osing-800 text-white flex items-center justify-center shadow-lg border-2 border-white">
+                    <i class="fa-solid fa-map-location-dot text-base"></i>
+                </div>
+                <span class="text-[10px] font-semibold mt-0.5">Jelajah</span>
+            </button>
+            <button onclick="navigateTo('herbascience')" data-nav="herbascience" class="mobile-tab flex flex-col items-center justify-center py-1.5 rounded-xl text-slate-500">
+                <i class="fa-solid fa-flask-vial text-lg mb-0.5"></i>
+                <span class="text-[10px] font-semibold">Sains</span>
+            </button>
+            <button onclick="toggleMobileDrawer(true)" data-nav="more" class="mobile-tab flex flex-col items-center justify-center py-1.5 rounded-xl text-slate-500">
+                <i class="fa-solid fa-bars-staggered text-lg mb-0.5"></i>
+                <span class="text-[10px] font-semibold">Lainnya</span>
+            </button>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="beranda" class="pt-28 pb-16 bg-gradient-to-br from-brand-900 to-brand-700 text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-12">
-            <div class="md:w-1/2 space-y-6">
-                <span class="inline-block py-1 px-3 rounded-full bg-brand-500/30 text-brand-100 text-sm font-semibold tracking-wide border border-brand-500/50">
-                    Digital Ethnobotanical Health, Heritage & Green Economy
-                </span>
-                <h1 class="text-4xl md:text-5xl font-bold leading-tight">
-                    DESA TOGA KEMIREN
-                </h1>
-                <p class="text-lg text-brand-100 leading-relaxed">
-                    Platform digital terintegrasi yang menggabungkan pelestarian pengetahuan tanaman obat masyarakat Osing, dokumentasi etnobotani, kajian ilmiah, wisata edukasi, dan ekonomi hijau.
-                </p>
-                <div class="pt-4 border-t border-brand-600/50">
-                    <p class="font-medium italic">"Melestarikan Tanaman Obat, Merawat Warisan Osing, Membangun Kemiren Berdaya."</p>
-                    <p class="text-sm text-brand-200 italic mt-1">"Preserving Herbal Heritage, Connecting Science, Empowering Kemiren."</p>
+    <!-- =========================================================
+         MOBILE "MENU LAINNYA" DRAWER SHEET
+    ========================================================= -->
+    <div id="mobileMenuDrawer" class="fixed inset-0 z-50 hidden">
+        <div class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs transition-opacity" onclick="toggleMobileDrawer(false)"></div>
+        <div class="fixed bottom-0 inset-x-0 bg-white rounded-t-3xl p-5 pb-8 shadow-2xl max-h-[88vh] overflow-y-auto transform transition-transform">
+            <div class="w-12 h-1.5 bg-slate-300 rounded-full mx-auto mb-4"></div>
+            <div class="flex items-center justify-between mb-4">
+                <div>
+                    <h3 class="font-extrabold text-lg text-slate-900">Semua Fitur Ekosistem</h3>
+                    <p class="text-xs text-slate-500">Pilih modul Desa TOGA Kemiren</p>
                 </div>
+                <button onclick="toggleMobileDrawer(false)" class="w-9 h-9 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
             </div>
-            <div class="md:w-1/2">
-                <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Herbal Plants" class="rounded-2xl shadow-2xl border-4 border-brand-500/20 object-cover h-96 w-full">
+            <!-- Mobile Search inside Drawer -->
+            <div class="relative mb-4">
+                <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3 text-slate-400 text-sm"></i>
+                <input type="text" onkeyup="handleGlobalSearch(this.value)" placeholder="Cari tanaman, batch QR, produk..." 
+                    class="w-full bg-slate-100 border border-slate-200 text-sm rounded-xl pl-9 pr-3 py-2.5 focus:outline-none focus:border-osing-600">
+            </div>
+            <div id="mobileDrawerGrid" class="grid grid-cols-2 gap-2.5">
+                <!-- Populated by JS -->
+            </div>
+            <div class="mt-4 pt-4 border-t border-slate-100">
+                <button onclick="toggleMobileDrawer(false); openQrSimulator();" class="w-full py-3 rounded-xl bg-osing-800 text-white font-semibold text-sm flex items-center justify-center gap-2 shadow">
+                    <i class="fa-solid fa-qrcode"></i>
+                    <span>Buka Pemindai QR Tanaman & Produk</span>
+                </button>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Core Innovation Section -->
-    <section id="unggulan" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-brand-900">Fitur Unggulan (Core Innovation)</h2>
-                <p class="mt-4 text-slate-600 max-w-2xl mx-auto">Tiga pilar utama yang menjadikan DESA TOGA KEMIREN sebagai platform inovatif dan komprehensif.</p>
+    <!-- =========================================================
+         UNIVERSAL MODAL / DETAIL SHEET (For Plant Details, QR Scan, Cart, etc.)
+    ========================================================= -->
+    <div id="universalModal" class="fixed inset-0 z-50 hidden flex items-end sm:items-center justify-center p-0 sm:p-4">
+        <div class="fixed inset-0 bg-slate-900/65 backdrop-blur-xs" onclick="closeModal()"></div>
+        <div id="modalContentBox" class="relative bg-white w-full sm:max-w-2xl rounded-t-3xl sm:rounded-3xl shadow-2xl max-h-[90vh] overflow-y-auto z-10 p-5 sm:p-7">
+            <!-- Modal content injected dynamically -->
+        </div>
+    </div>
+
+    <!-- =========================================================
+         TOAST NOTIFICATION
+    ========================================================= -->
+    <div id="toastBox" class="fixed top-16 sm:top-6 right-4 left-4 sm:left-auto sm:w-96 z-50 pointer-events-none hidden">
+        <div class="bg-slate-900 text-white px-4 py-3 rounded-2xl shadow-xl border border-slate-700 flex items-center gap-3">
+            <div id="toastIcon" class="w-8 h-8 rounded-xl bg-osing-600 flex items-center justify-center shrink-0">
+                <i class="fa-solid fa-check text-sm"></i>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Core 1 -->
-                <div class="feature-card bg-slate-50 rounded-2xl p-8 border border-slate-100 shadow-sm">
-                    <div class="w-14 h-14 bg-brand-100 rounded-xl flex items-center justify-center mb-6 text-brand-600 text-2xl">
-                        <i class="fa-solid fa-book-open"></i>
+            <div class="text-sm font-medium leading-snug" id="toastMessage">Berhasil</div>
+        </div>
+    </div>
+
+    <!-- =========================================================
+         APPLICATION DATA & INTERACTIVE LOGIC
+    ========================================================= -->
+    <script>
+        // -------------------------------------------------------------
+        // 1. MASTER MENU CONFIGURATION (8 Main Menus)
+        // -------------------------------------------------------------
+        const MENUS = [
+            { id: 'beranda', label: 'Beranda', subtitle: 'Pusat Ekosistem', icon: 'fa-house', badge: 'Utama', desc: 'Informasi utama, aktivitas, dan pengenalan Desa TOGA Kemiren' },
+            { id: 'osingpedia', label: 'Osingpedia', subtitle: 'Ensiklopedia Etnobotani', icon: 'fa-book-medical', badge: 'Core 1', desc: 'Ensiklopedia tanaman obat dan pengetahuan etnobotani' },
+            { id: 'jelajah', label: 'Jelajah Osing', subtitle: 'Peta Wisata & Rute', icon: 'fa-map-location-dot', badge: 'Core 2', desc: 'Peta lokasi tanaman, kebun, dan wisata edukasi' },
+            { id: 'herbascience', label: 'HerbaScience', subtitle: 'Fitokimia & Jurnal', icon: 'fa-flask-vial', badge: 'Core 3', desc: 'Informasi fitokimia dan bukti ilmiah' },
+            { id: 'sehat', label: 'Sehat Osing', subtitle: 'Edukasi & Interaksi', icon: 'fa-heart-pulse', badge: 'Wellness', desc: 'Edukasi kesehatan dan pemanfaatan herbal' },
+            { id: 'herbaguard', label: 'HerbaGuard', subtitle: 'Mutu & Traceability', icon: 'fa-shield-halved', badge: 'QR Cek', desc: 'Informasi mutu dan ketertelusuran produk' },
+            { id: 'greenhub', label: 'Osing GreenHub', subtitle: 'Budidaya & Komunitas', icon: 'fa-seedling', badge: 'Tani', desc: 'Budidaya TOGA dan pemberdayaan masyarakat' },
+            { id: 'pasar', label: 'Pasar Osing', subtitle: 'Katalog UMKM Lokal', icon: 'fa-store', badge: 'Belanja', desc: 'Katalog produk dan UMKM lokal' }
+        ];
+
+        // -------------------------------------------------------------
+        // 2. RICH ETHNOBOTANICAL & KEMIREN DATABASE
+        // -------------------------------------------------------------
+        const PLANTS = [
+            {
+                id: 'kunir-putih',
+                localName: 'Kunir Putih (Kunyit Putih)',
+                osingName: 'Kunir Pethak',
+                scientificName: 'Curcuma zedoaria (Christm.) Roscoe',
+                family: 'Zingiberaceae',
+                part: 'Rimpang',
+                colorTheme: 'from-amber-500 to-yellow-600',
+                icon: 'fa-mortar-pestle',
+                image: 'https://images.unsplash.com/photo-1615485500704-8e990f9900f7?auto=format&fit=crop&w=800&q=80',
+                morphology: 'Terna berbatang semu tinggi 1–1,5 m, daun hijau dengan garis ungu kecokelatan di bagian tengah tulang daun. Rimpang bagian dalam berwarna putih kekuningan dengan aroma khas menyerupai mangga kweni.',
+                metabolites: ['Kurkuminoid', 'Zedoarin', 'Kurkumenol', 'Minyak Atsiri (Sineol, Kamfor)', 'Flavonoid'],
+                traditionalUse: 'Masyarakat Osing Kemiren mengolah perasan rimpang Kunir Pethak yang dicampur madu hutan Banyuwangi sebagai ramuan pemulihan stamina pasca bekerja di sawah, meredakan rasa penuh di lambung, dan perawatan kewanitaan.',
+                elderLore: 'Menurut penuturan sesepuh adat Kemiren (Mbah Sapuah, dengan persetujuan narasumber), Kunir Pethak wajib dipanen saat daun mulai mengering agar sari patinya terkumpul optimal di rimpang.',
+                safetyNotes: 'Hindari konsumsi dosis pekat secara berlebihan pada ibu hamil dan penderita gangguan pembekuan darah. Gunakan sesuai takaran pangan fungsional.',
+                evidenceLevel: 'Uji Praklinis (In Vitro & Hewan)',
+                scientificSummary: 'Ekstrak rimpang Curcuma zedoaria menunjukkan aktivitas antioksidan, antiinflamasi, dan gastroprotektif melalui penghambatan mediator radang COX-2 dan penangkapan radikal bebas.',
+                mechanism: 'Senyawa kurkumenol dan zedoarin memodulasi jalur NF-κB serta meningkatkan sekresi mukus pelindung mukosa lambung.',
+                doi: '10.1016/j.jep.2021.114289 — Journal of Ethnopharmacology',
+                interactionRisk: {
+                    'Pengencer Darah': { level: 'Waspada', msg: 'Kurkuminoid dapat memperkuat efek antikoagulan/antiplatelet (seperti warfarin atau aspirin), meningkatkan risiko memar atau perdarahan.' },
+                    'Ibu Hamil': { level: 'Hindari Dosis Tinggi', msg: 'Dosis ekstrak pekat berpotensi merangsang kontraksi uterus; aman sebatas bumbu masakan wajar.' },
+                    'Lambung': { level: 'Relatif Aman (Terukur)', msg: 'Secara tradisional membantu kenyamanan lambung, namun konsumsi saat perut kosong bagi penderita tukak akut perlu kehati-hatian.' },
+                    'Umum / Sehat': { level: 'Aman Dikonsumsi', msg: 'Aman dikonsumsi sebagai minuman tradisional 1–2 cangkir per hari menggunakan rimpang segar yang dicuci bersih.' }
+                }
+            },
+            {
+                id: 'temulawak',
+                localName: 'Temulawak',
+                osingName: 'Temu Lawak',
+                scientificName: 'Curcuma xanthorrhiza Roxb.',
+                family: 'Zingiberaceae',
+                part: 'Rimpang',
+                colorTheme: 'from-orange-500 to-amber-600',
+                icon: 'fa-spa',
+                image: 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=800&q=80',
+                morphology: 'Rimpang induk besar berbentuk bulat telur berwarna kuning tua hingga jingga kecokelatan di bagian dalam, beraroma tajam dan terasa agak pahit getir.',
+                metabolites: ['Xanthorrhizol', 'Kurkumin', 'Demetoksikurkumin', 'Germakron', 'Patik'],
+                traditionalUse: 'Digunakan warga Kemiren sebagai jamu penambah nafsu makan anak-anak ("cekok" atau rebusan manis gula aren), menjaga kesehatan fungsi hati, dan kebugaran tubuh saat musim pancaroba.',
+                elderLore: 'Dalam tradisi selamatan desa dan ritual Barong Ider Bumi, jamu temulawak gula aren sering disajikan hangat untuk menjaga daya tahan para penari dan warga.',
+                safetyNotes: 'Tidak dianjurkan bagi penderita penyumbatan saluran empedu (batu empedu) tanpa pengawasan dokter.',
+                evidenceLevel: 'Uji Klinis',
+                scientificSummary: 'Xanthorrhizol merupakan senyawa penanda khas Curcuma xanthorrhiza yang terbukti memiliki efek hepatoprotektif, antimikroba, dan antiinflamasi pada berbagai studi klinis dan praklinis.',
+                mechanism: 'Meningkatkan produksi dan aliran empedu (koleretik) serta menurunkan stres oksidatif pada sel hepatosit hati.',
+                doi: '10.3390/molecules26092614 — Molecules MDPI',
+                interactionRisk: {
+                    'Pengencer Darah': { level: 'Waspada', msg: 'Dapat memengaruhi agregasi trombosit ringan jika dikonsumsi bersamaan dengan obat antikoagulan.' },
+                    'Ibu Hamil': { level: 'Konsultasi Dokter', msg: 'Sebaiknya konsultasikan dengan bidan atau dokter sebelum konsumsi rutin selama kehamilan.' },
+                    'Lambung': { level: 'Aman', msg: 'Membantu meredakan dispepsia ringan (kembung) berkat efek stimulasi sekresi empedu.' },
+                    'Umum / Sehat': { level: 'Aman Dikonsumsi', msg: 'Telah ditetapkan sebagai Fitofarmaka/OHT populer di Indonesia; seduh 10–15 gram irisan kering.' }
+                }
+            },
+            {
+                id: 'jahe-merah',
+                localName: 'Jahe Merah',
+                osingName: 'Jae Abang',
+                scientificName: 'Zingiber officinale var. rubrum',
+                family: 'Zingiberaceae',
+                part: 'Rimpang',
+                colorTheme: 'from-red-600 to-rose-700',
+                icon: 'fa-fire-flame-curved',
+                image: 'https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&w=800&q=80',
+                morphology: 'Rimpang berukuran lebih kecil dari jahe gajah, kulit luar kemerahan, serat kasar, dengan kandungan minyak atsiri dan oleoresin yang tinggi sehingga rasanya sangat pedas dan hangat.',
+                metabolites: ['6-Gingerol', '6-Shogaol', 'Zingeron', 'Minyak Atsiri (Zingiberen)', 'Paradol'],
+                traditionalUse: 'Bahan utama minuman penghangat malam khas Kemiren ("Wedang Jae Abang Serai") untuk meredakan masuk angin, pegal linu, tenggorokan gatal, dan mual.',
+                elderLore: 'Ditanam di pekarangan rumah adat Osing ("tikel balung") agar mudah dipetik kapan saja saat cuaca dingin dari lereng Gunung Ijen.',
+                safetyNotes: 'Konsumsi berlebihan dapat memicu rasa panas di ulu hati (heartburn) pada individu yang sensitif terhadap rasa pedas.',
+                evidenceLevel: 'Uji Klinis',
+                scientificSummary: 'Gingerol dan shogaol terbukti secara klinis efektif sebagai antiemetik (antimual), analgesik ringan, dan imunomodulator saluran pernapasan.',
+                mechanism: 'Antagonis reseptor serotonin 5-HT3 di saluran cerna serta menghambat sintesis prostaglandin dan leukotrien pro-inflamasi.',
+                doi: '10.1016/j.ctim.2020.102405 — Complementary Therapies in Medicine',
+                interactionRisk: {
+                    'Pengencer Darah': { level: 'Waspada', msg: 'Jahe merah dosis tinggi dapat meningkatkan risiko perdarahan bila diminum bersama obat pengencer darah.' },
+                    'Ibu Hamil': { level: 'Aman Dosis Rendah', msg: 'Membantu mual pagi (morning sickness) pada dosis rendah (<1 gram kering/hari), hindari dosis pekat.' },
+                    'Lambung': { level: 'Perhatikan Dosis', msg: 'Sensasi pedas oleoresin dapat mengiritasi lambung jika diminum terlalu pekat saat perut kosong.' },
+                    'Umum / Sehat': { level: 'Aman Dikonsumsi', msg: 'Sangat baik diminum hangat setelah makan untuk melancarkan peredaran darah dan menghangatkan tubuh.' }
+                }
+            },
+            {
+                id: 'daun-kelor',
+                localName: 'Daun Kelor',
+                osingName: 'Godong Kelor',
+                scientificName: 'Moringa oleifera Lam.',
+                family: 'Moringaceae',
+                part: 'Daun',
+                colorTheme: 'from-emerald-600 to-osing-800',
+                icon: 'fa-leaf',
+                image: 'https://images.unsplash.com/photo-1515543904379-3d757afe72e4?auto=format&fit=crop&w=800&q=80',
+                morphology: 'Pohon berbatang lunak dengan daun majemuk menyirip gasal, anak daun berbentuk bulat telur kecil berwarna hijau segar yang kaya nutrisi mikro.',
+                metabolites: ['Quercetin', 'Kaempferol', 'Asam Klorogenat', 'Beta-karoten', 'Zat Besi & Kalsium'],
+                traditionalUse: 'Diolah warga Kemiren menjadi "Jangan Bening Kelor" (sayur bening) untuk ibu menyusui guna memperlancar ASI serta pemenuhan gizi keluarga dan pencegahan stunting.',
+                elderLore: 'Pohon kelor sering ditanam sebagai pagar hidup pekarangan di Kemiren karena mudah tumbuh dan menjadi sumber pangan sehat harian warga.',
+                safetyNotes: 'Hanya gunakan bagian daun; bagian akar dan kulit batang tidak dianjurkan untuk konsumsi harian karena mengandung alkaloid spirochin.',
+                evidenceLevel: 'Uji Klinis',
+                scientificSummary: 'Kaya polifenol antioksidan (quercetin dan asam klorogenat) yang mendukung profil lipid, kontrol glukosa darah, serta status mikronutrien.',
+                mechanism: 'Menghambat enzim alfa-glukosidase pada penyerapan karbohidrat dan menetralisir spesies oksigen reaktif (ROS).',
+                doi: '10.3389/fphar.2022.845312 — Frontiers in Pharmacology',
+                interactionRisk: {
+                    'Pengencer Darah': { level: 'Aman', msg: 'Tidak memiliki interaksi signifikan terhadap obat pengencer darah pada takaran sayur atau teh daun.' },
+                    'Ibu Hamil': { level: 'Aman (Bagian Daun)', msg: 'Daun kelor baik sebagai sumber zat besi & folat; hindari bagian akar atau kulit batang.' },
+                    'Lambung': { level: 'Aman', msg: 'Lembut di lambung dan mudah dicerna sebagai sayur bening atau seduhan teh hijau kelor.' },
+                    'Umum / Sehat': { level: 'Sangat Dianjurkan', msg: 'Superfood lokal tinggi antioksidan, vitamin C, dan mineral esensial.' }
+                }
+            },
+            {
+                id: 'serai-wangi',
+                localName: 'Serai Dapur & Wangi',
+                osingName: 'Sereh',
+                scientificName: 'Cymbopogon citratus (DC.) Stapf',
+                family: 'Poaceae',
+                part: 'Daun',
+                colorTheme: 'from-lime-600 to-green-700',
+                icon: 'fa-wind',
+                image: 'https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?auto=format&fit=crop&w=800&q=80',
+                morphology: 'Tanaman rumput berumpun lebat, batang semu berpelepah putih kehijauan di pangkal dengan aroma sitrus menyegarkan saat dimemarkan.',
+                metabolites: ['Sitral (Geranial & Neral)', 'Sitronelal', 'Geraniol', 'Luteolin', 'Isoorientin'],
+                traditionalUse: 'Menjadi campuran wajib dalam racikan Kopi Kemiren herbal, wedang rempah, serta minyak gosok tradisional untuk relaksasi dan pengusir nyamuk alami.',
+                elderLore: 'Uap rebusan daun serai dan daun jeruk purut digunakan masyarakat Osing untuk mandi uap ("timung") guna menyegarkan badan setelah hajatan adat.',
+                safetyNotes: 'Minyak atsiri murni harus diencerkan dengan minyak pembawa sebelum dioleskan ke kulit sensitif.',
+                evidenceLevel: 'Uji Praklinis (In Vitro & Hewan)',
+                scientificSummary: 'Kandungan sitral memberikan efek relaksasi sistem saraf ringan, antimikroba, serta membantu menstabilkan tekanan darah ringan melalui efek diuretik lembut.',
+                mechanism: 'Sitral berinteraksi dengan jalur GABAergik memberikan efek menenangkan serta merelaksasi otot polos vaskular.',
+                doi: '10.1016/j.heliyon.2021.e06891 — Heliyon',
+                interactionRisk: {
+                    'Pengencer Darah': { level: 'Aman', msg: 'Aman dikonsumsi sebagai minuman seduhan wajar.' },
+                    'Ibu Hamil': { level: 'Waspada Dosis Pekat', msg: 'Boleh sebagai bumbu masakan atau teh ringan; hindari minyak atsiri pekat.' },
+                    'Lambung': { level: 'Aman', msg: 'Membantu mengurangi gas berlebih (karminatif) dan rasa begah di perut.' },
+                    'Umum / Sehat': { level: 'Aman Dikonsumsi', msg: 'Memberikan efek relaksasi, kesegaran napas, dan membantu kualitas tidur.' }
+                }
+            },
+            {
+                id: 'telang',
+                localName: 'Bunga Telang',
+                osingName: 'Kembang Telang',
+                scientificName: 'Clitoria ternatea L.',
+                family: 'Fabaceae',
+                part: 'Bunga',
+                colorTheme: 'from-blue-600 to-indigo-700',
+                icon: 'fa-fan',
+                image: 'https://images.unsplash.com/photo-1563822249366-3efb23b8e0c9?auto=format&fit=crop&w=800&q=80',
+                morphology: 'Tanaman merambat dengan bunga tunggal berwarna biru keunguan pekat menyerupai kupu-kupu dan bagian tengah berwarna putih kekuningan.',
+                metabolites: ['Ternatin (Antosianin)', 'Delphinidin', 'Kaempferol', 'Siklotida'],
+                traditionalUse: 'Diseduh menjadi teh biru menyegarkan dengan perasan jeruk nipis lokal Banyuwangi, serta digunakan sebagai pewarna biru alami kue tradisional Osing (seperti kue kucur dan klepon).',
+                elderLore: 'Warga Kemiren menanam kembang telang di rambatan bambu depan rumah untuk memperindah desa wisata sekaligus bahan minuman penyambut tamu.',
+                safetyNotes: 'Gunakan hanya mahkota bunganya; biji telang mentah tidak untuk dikonsumsi.',
+                evidenceLevel: 'Uji Klinis',
+                scientificSummary: 'Antosianin jenis ternatin memiliki kapasitas antioksidan tinggi yang melindungi sel dari stres oksidatif dan mendukung kesehatan kognitif serta mata.',
+                mechanism: 'Menetralkan radikal bebas dan menghambat peroksidasi lipid pada membran sel.',
+                doi: '10.1016/j.foodchem.2022.132450 — Food Chemistry',
+                interactionRisk: {
+                    'Pengencer Darah': { level: 'Aman', msg: 'Seduhan 5–7 kuntum bunga telang aman dikonsumsi sehari-hari.' },
+                    'Ibu Hamil': { level: 'Konsultasi Dokter', msg: 'Aman sebagai pewarna makanan alami, konsultasikan jika rutin diminum setiap hari.' },
+                    'Lambung': { level: 'Aman', msg: 'Bebas kafein dan lembut di lambung (kurangi perasan jeruk nipis jika lambung sensitif asam).' },
+                    'Umum / Sehat': { level: 'Aman Dikonsumsi', msg: 'Minuman antioksidan bebas kafein yang menyegarkan dan mendukung kesehatan mata.' }
+                }
+            }
+        ];
+
+        // -------------------------------------------------------------
+        // 3. JELAJAH OSING — INTERACTIVE MAP LOCATIONS & ROUTES
+        // -------------------------------------------------------------
+        const MAP_SPOTS = [
+            {
+                id: 'spot-1',
+                name: 'Kebun TOGA Krajan Kemiren',
+                category: 'Kebun Koleksi',
+                x: 24, y: 34,
+                distance: '0 m (Titik Mulai)',
+                duration: '15 Menit',
+                hours: '07.30 – 16.30 WIB',
+                manager: 'Kelompok Tani Wanita (KWT) Srikandi Osing',
+                plants: ['Kunir Pethak', 'Temulawak', 'Jahe Merah', 'Kembang Telang'],
+                activity: 'Pengenalan 40+ spesies tanaman obat berlabel QR Code dan edukasi morfologi rimpang.',
+                qrCode: 'QR-LOC-01'
+            },
+            {
+                id: 'spot-2',
+                name: 'Sanggar Racik Jamu Mbok Yem',
+                category: 'Demonstrasi Herbal',
+                x: 52, y: 26,
+                distance: '350 m dari Titik 1',
+                duration: '20 Menit',
+                hours: '08.00 – 16.00 WIB',
+                manager: 'Ibu Sumiyati & Kader Sehat Osing',
+                plants: ['Kunir Pethak', 'Serai Wangi', 'Asam Jawa'],
+                activity: 'Demonstrasi langsung menumbuk dan merebus jamu tradisional Osing higienis menggunakan peralatan gerabah & stainless.',
+                qrCode: 'QR-LOC-02'
+            },
+            {
+                id: 'spot-3',
+                name: 'Taman Adat & Rumah Tikel Balung',
+                category: 'Warisan Etnobotani',
+                x: 74, y: 52,
+                distance: '450 m dari Titik 2',
+                duration: '20 Menit',
+                hours: '08.00 – 17.00 WIB',
+                manager: 'Lembaga Adat Osing Kemiren',
+                plants: ['Godong Kelor', 'Sirih Merah', 'Pinang'],
+                activity: 'Wisata budaya rumah adat Tikel Balung dan kisah etnobotani pemanfaatan tanaman dalam tradisi & selamatan Osing.',
+                qrCode: 'QR-LOC-03'
+            },
+            {
+                id: 'spot-4',
+                name: 'Sentra UMKM & Lab Mutu HerbaGuard',
+                category: 'UMKM & Produk',
+                x: 42, y: 72,
+                distance: '500 m dari Titik 3',
+                duration: '15 Menit',
+                hours: '08.00 – 17.00 WIB',
+                manager: 'Koperasi Hijau Kemiren Berdaya',
+                plants: ['Serbuk Jahe Merah', 'Teh Kelor', 'Wedang Osing'],
+                activity: 'Melihat proses pengeringan higienis (solar dryer), pengemasan ber-QR HerbaGuard, dan galeri oleh-oleh Pasar Osing.',
+                qrCode: 'QR-LOC-04'
+            }
+        ];
+
+        // -------------------------------------------------------------
+        // 4. HERBAGUARD — PRODUCT TRACEABILITY BATCHES
+        // -------------------------------------------------------------
+        const BATCHES = {
+            'KMR-2026-001': {
+                code: 'KMR-2026-001',
+                productName: 'Kunyit Putih & Asam Kemiren Instan',
+                umkm: 'UMKM Sekar Osing Herbal',
+                farmOrigin: 'Kebun TOGA Blok Krajan Wetan, Desa Kemiren (Petani: Bpk. Misnadi)',
+                harvestDate: '12 Oktober 2026',
+                prodDate: '15 Oktober 2026',
+                expDate: '15 Oktober 2027',
+                certifications: ['P-IRT No. 2133510010892-26', 'Halal ID351100048291026', 'Terverifikasi HerbaGuard'],
+                processSteps: [
+                    'Panen rimpang Kunir Pethak usia 9 bulan (bebas pestisida sintetis)',
+                    'Sortasi basah, pencucian air mengalir 3 tahap & pengirisan 2 mm',
+                    'Pengeringan higienis menggunakan Solar Dome Dryer (suhu terkontrol 45°C)',
+                    'Ekstraksi sari rimpang & kristalisasi dengan gula aren organik Banyuwangi'
+                ],
+                labParams: {
+                    kadarAir: '3.8% (Standar < 5%) — LULUS',
+                    cemaranMikroba: 'Negatif / Memenuhi Syarat BPOM',
+                    kadarKurkuminoid: 'Terdeteksi Positif (Uji KLT/Spektrofotometri)',
+                    bahanTambahan: '0% Pengawet & Pewarna Sintetis'
+                }
+            },
+            'KMR-2026-002': {
+                code: 'KMR-2026-002',
+                productName: 'Teh Celup Daun Kelor & Serai Osing',
+                umkm: 'KWT Srikandi Kemiren',
+                farmOrigin: 'Pekarangan Organik Dusun Kedaleman, Desa Kemiren',
+                harvestDate: '01 November 2026',
+                prodDate: '03 November 2026',
+                expDate: '03 November 2027',
+                certifications: ['P-IRT No. 5103510020411-26', 'Halal ID351100051920126', 'Organik Komunitas'],
+                processSteps: [
+                    'Pemetikan pucuk daun kelor segar pagi hari & batang serai wangi',
+                    'Blanching uap singkat untuk mempertahankan klorofil & antioksidan quercetin',
+                    'Pengeringan teduh (shade drying) dalam ruang tertutup higienis',
+                    'Perajangan seragam dan pengemasan kantong teh food-grade bebas pemutih'
+                ],
+                labParams: {
+                    kadarAir: '4.2% (Standar < 8%) — LULUS',
+                    cemaranMikroba: 'Negatif Salmonella & E. coli',
+                    aktivitasAntioksidan: 'Tinggi (Uji DPPH)',
+                    bahanTambahan: '100% Simplisia Alami'
+                }
+            },
+            'KMR-2026-003': {
+                code: 'KMR-2026-003',
+                productName: 'Wedang Jae Abang & Rempah Ijen',
+                umkm: 'Dapur Herbal Mbok Yem',
+                farmOrigin: 'Kebun Kemitraan Lereng Kemiren – Licin',
+                harvestDate: '10 November 2026',
+                prodDate: '12 November 2026',
+                expDate: '12 Agustus 2027',
+                certifications: ['P-IRT No. 2123510030915-26', 'Halal ID351100062819226'],
+                processSteps: [
+                    'Pemilihan rimpang Jahe Merah tua beraroma pedas tinggi',
+                    'Pembersihan kulit luar, pemanggangan ringan untuk aroma khas',
+                    'Pencampuran dengan kayu secang, cengkeh, dan serai kering',
+                    'Pengemasan kedap udara untuk menjaga kestabilan minyak atsiri gingerol'
+                ],
+                labParams: {
+                    kadarAir: '4.5% — LULUS',
+                    cemaranMikroba: 'Memenuhi Batas Cemaran Mikroba',
+                    kadarMinyakAtsiri: '2.4% v/b (Tinggi)',
+                    bahanTambahan: 'Tanpa Pemanis Buatan'
+                }
+            }
+        };
+
+        // -------------------------------------------------------------
+        // 5. PASAR OSING — UMKM PRODUCTS
+        // -------------------------------------------------------------
+        const PRODUCTS = [
+            {
+                id: 'prod-1',
+                name: 'Kunyit Putih & Asam Kemiren Instan (200g)',
+                category: 'Minuman Herbal',
+                price: 35000,
+                umkm: 'UMKM Sekar Osing Herbal',
+                batchCode: 'KMR-2026-001',
+                rating: 4.9,
+                sold: 142,
+                icon: 'fa-mug-hot',
+                color: 'bg-amber-100 text-amber-700',
+                desc: 'Serbuk minuman tradisional berbahan rimpang Kunir Pethak asli Kemiren dan asam jawa tanpa pengawet. Praktis diseduh hangat maupun dingin.'
+            },
+            {
+                id: 'prod-2',
+                name: 'Teh Celup Kelor & Serai Wangi (Isi 20 Kantong)',
+                category: 'Teh Rempah',
+                price: 28000,
+                umkm: 'KWT Srikandi Kemiren',
+                batchCode: 'KMR-2026-002',
+                rating: 4.8,
+                sold: 98,
+                icon: 'fa-leaf',
+                color: 'bg-emerald-100 text-emerald-700',
+                desc: 'Perpaduan daun kelor kaya antioksidan dengan aroma sitrus serai wangi Kemiren. Bebas kafein dan menenangkan.'
+            },
+            {
+                id: 'prod-3',
+                name: 'Wedang Jae Abang & Rempah Ijen (5 Sachet)',
+                category: 'Minuman Herbal',
+                price: 32000,
+                umkm: 'Dapur Herbal Mbok Yem',
+                batchCode: 'KMR-2026-003',
+                rating: 5.0,
+                sold: 215,
+                icon: 'fa-fire',
+                color: 'bg-rose-100 text-rose-700',
+                desc: 'Racikan rempah utuh jahe merah, secang, serai, dan gula aren murni untuk menghangatkan tubuh dan menjaga kebugaran.'
+            },
+            {
+                id: 'prod-4',
+                name: 'Minyak Gosok Sereh & Gandapura Osing (60ml)',
+                category: 'Perawatan Alami',
+                price: 40000,
+                umkm: 'Koperasi Hijau Kemiren',
+                batchCode: 'KMR-2026-002',
+                rating: 4.9,
+                sold: 76,
+                icon: 'fa-bottle-droplet',
+                color: 'bg-lime-100 text-lime-700',
+                desc: 'Minyak pijat aromaterapi dari destilasi serai wangi Kemiren untuk meredakan pegal otot dan gigitan serangga.'
+            },
+            {
+                id: 'prod-5',
+                name: 'Teh Bunga Telang Kering Organik (30g)',
+                category: 'Teh Rempah',
+                price: 25000,
+                umkm: 'Kebun Edukasi Krajan',
+                batchCode: 'KMR-2026-002',
+                rating: 4.8,
+                sold: 110,
+                icon: 'fa-fan',
+                color: 'bg-indigo-100 text-indigo-700',
+                desc: 'Mahkota bunga telang pilihan yang dikeringkan alami, menghasilkan warna biru antosianin alami yang cantik.'
+            },
+            {
+                id: 'prod-6',
+                name: 'Paket Oleh-Oleh Wisata Edukasi TOGA Box',
+                category: 'Paket Wisata',
+                price: 85000,
+                umkm: 'Sentra UMKM Kemiren',
+                batchCode: 'KMR-2026-001',
+                rating: 5.0,
+                sold: 64,
+                icon: 'fa-gift',
+                color: 'bg-kunir-100 text-kunir-700',
+                desc: 'Hampers eksklusif berisi Kunir Putih Instan, Teh Kelor Serai, Wedang Jae Abang, dan buklet saku Osingpedia.'
+            }
+        ];
+
+        // -------------------------------------------------------------
+        // 6. APPLICATION STATE
+        // -------------------------------------------------------------
+        let state = {
+            currentTab: 'beranda',
+            plantFilter: 'Semua',
+            plantSearch: '',
+            selectedSpotId: 'spot-1',
+            sciencePlantId: 'kunir-putih',
+            scienceEvidenceFilter: 'Semua',
+            interactionPlantId: 'kunir-putih',
+            interactionCondition: 'Pengencer Darah',
+            batchInput: 'KMR-2026-001',
+            greenhubTab: 'kalender',
+            marketCategory: 'Semua',
+            cart: [
+                { productId: 'prod-1', qty: 1 }
+            ]
+        };
+
+        // -------------------------------------------------------------
+        // 7. NAVIGATION & INITIALIZATION
+        // -------------------------------------------------------------
+        function initApp() {
+            renderNavigationMenus();
+            updateCartBadges();
+            navigateTo('beranda');
+        }
+
+        function renderNavigationMenus() {
+            // Desktop Sidebar Nav
+            const desktopNav = document.getElementById('desktopNav');
+            desktopNav.innerHTML = MENUS.map(m => `
+                <button onclick="navigateTo('${m.id}')" data-desktop-nav="${m.id}"
+                    class="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-medium transition-all text-osing-200 hover:bg-osing-900 hover:text-white group">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-osing-900 group-hover:bg-osing-800 flex items-center justify-center text-osing-400 group-hover:text-kunir-400 transition">
+                            <i class="fa-solid ${m.icon} text-sm"></i>
+                        </div>
+                        <span>${m.label}</span>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-800 mb-3">OSINGPEDIA</h3>
-                    <p class="text-slate-600 leading-relaxed">Basis data etnobotani yang mendokumentasikan tanaman obat dan pengetahuan tradisional masyarakat Osing secara digital.</p>
-                </div>
-                <!-- Core 2 -->
-                <div class="feature-card bg-brand-600 rounded-2xl p-8 shadow-lg text-white transform scale-105">
-                    <div class="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center mb-6 text-white text-2xl">
-                        <i class="fa-solid fa-map-location-dot"></i>
+                    <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-osing-900/90 text-osing-300 border border-osing-800">${m.badge}</span>
+                </button>
+            `).join('');
+
+            // Mobile Drawer Grid
+            const drawerGrid = document.getElementById('mobileDrawerGrid');
+            drawerGrid.innerHTML = MENUS.map(m => `
+                <button onclick="navigateTo('${m.id}'); toggleMobileDrawer(false);"
+                    class="flex flex-col items-start p-3.5 rounded-2xl border border-slate-200 bg-slate-50/70 hover:bg-osing-50 hover:border-osing-300 text-left transition">
+                    <div class="w-9 h-9 rounded-xl bg-osing-100 text-osing-800 flex items-center justify-center mb-2">
+                        <i class="fa-solid ${m.icon}"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">JELAJAH OSING</h3>
-                    <p class="text-brand-50 leading-relaxed">Peta wisata edukasi yang menghubungkan informasi tanaman dengan lokasi dan pengalaman kunjungan secara langsung.</p>
-                </div>
-                <!-- Core 3 -->
-                <div class="feature-card bg-slate-50 rounded-2xl p-8 border border-slate-100 shadow-sm">
-                    <div class="w-14 h-14 bg-brand-100 rounded-xl flex items-center justify-center mb-6 text-brand-600 text-2xl">
-                        <i class="fa-solid fa-flask"></i>
+                    <div class="font-bold text-sm text-slate-900">${m.label}</div>
+                    <div class="text-[11px] text-slate-500 line-clamp-1">${m.subtitle}</div>
+                </button>
+            `).join('');
+        }
+
+        function navigateTo(tabId) {
+            state.currentTab = tabId;
+            const menuObj = MENUS.find(m => m.id === tabId) || MENUS[0];
+
+            // Update Desktop Header
+            document.getElementById('desktopBreadcrumb').textContent = `DESA TOGA KEMIREN • ${menuObj.subtitle}`;
+            document.getElementById('desktopPageTitle').textContent = `${menuObj.label} — ${menuObj.desc}`;
+
+            // Update Mobile Header
+            document.getElementById('mobileHeaderSubtitle').textContent = `${menuObj.label} • ${menuObj.subtitle}`;
+
+            // Update Desktop Active State
+            document.querySelectorAll('[data-desktop-nav]').forEach(btn => {
+                const isActive = btn.getAttribute('data-desktop-nav') === tabId;
+                if (isActive) {
+                    btn.className = 'w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-bold transition-all bg-gradient-to-r from-osing-700 to-osing-800 text-white shadow-md border border-osing-600/50';
+                } else {
+                    btn.className = 'w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-medium transition-all text-osing-200 hover:bg-osing-900 hover:text-white group';
+                }
+            });
+
+            // Update Mobile Bottom Tabs Active State
+            document.querySelectorAll('.mobile-tab').forEach(btn => {
+                const navTarget = btn.getAttribute('data-nav');
+                const isMoreActive = navTarget === 'more' && !['beranda', 'osingpedia', 'jelajah', 'herbascience'].includes(tabId);
+                if (navTarget === tabId || isMoreActive) {
+                    btn.classList.remove('text-slate-500');
+                    btn.classList.add('text-osing-700', 'font-bold');
+                } else {
+                    btn.classList.remove('text-osing-700', 'font-bold');
+                    btn.classList.add('text-slate-500');
+                }
+            });
+
+            // Render View
+            const viewport = document.getElementById('appViewport');
+            viewport.innerHTML = `<div class="view-section">${renderView(tabId)}</div>`;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleMobileDrawer(show) {
+            const drawer = document.getElementById('mobileMenuDrawer');
+            if (show) {
+                drawer.classList.remove('hidden');
+            } else {
+                drawer.classList.add('hidden');
+            }
+        }
+
+        function handleGlobalSearch(query) {
+            const q = query.trim().toLowerCase();
+            if (!q) return;
+            state.plantSearch = q;
+            if (state.currentTab !== 'osingpedia') {
+                navigateTo('osingpedia');
+            } else {
+                document.getElementById('appViewport').innerHTML = `<div class="view-section">${renderView('osingpedia')}</div>`;
+            }
+        }
+
+        // -------------------------------------------------------------
+        // 8. VIEW RENDERERS FOR ALL 8 FEATURES
+        // -------------------------------------------------------------
+        function renderView(tabId) {
+            switch (tabId) {
+                case 'beranda': return renderBeranda();
+                case 'osingpedia': return renderOsingpedia();
+                case 'jelajah': return renderJelajah();
+                case 'herbascience': return renderHerbaScience();
+                case 'sehat': return renderSehatOsing();
+                case 'herbaguard': return renderHerbaGuard();
+                case 'greenhub': return renderGreenHub();
+                case 'pasar': return renderPasarOsing();
+                default: return renderBeranda();
+            }
+        }
+
+        // =============================================================
+        // VIEW 1: BERANDA (Interactive Super-App Dashboard)
+        // =============================================================
+        function renderBeranda() {
+            return `
+                <!-- Hero Banner -->
+                <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-osing-950 via-osing-900 to-osing-800 text-white p-6 sm:p-8 lg:p-10 shadow-xl mb-6">
+                    <div class="absolute -right-12 -bottom-12 w-64 h-64 rounded-full bg-kunir-500/15 blur-2xl pointer-events-none"></div>
+                    <div class="absolute right-8 top-8 text-osing-700/20 text-9xl pointer-events-none hidden sm:block">
+                        <i class="fa-solid fa-leaf"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-800 mb-3">HERBASCIENCE</h3>
-                    <p class="text-slate-600 leading-relaxed">Pusat informasi yang menghubungkan pengetahuan herbal tradisional dengan kandungan kimia dan bukti penelitian ilmiah.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 7 Features Ecosystem -->
-    <section id="fitur" class="py-20 bg-slate-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-brand-900">Ekosistem Platform</h2>
-                <p class="mt-4 text-slate-600 max-w-2xl mx-auto">Tujuh fitur terintegrasi yang saling terhubung untuk membangun destinasi wisata edukasi dan ekonomi hijau.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- 1 -->
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
-                    <h3 class="text-lg font-bold text-brand-700 flex items-center gap-2 border-b pb-3 mb-4">
-                        <span class="bg-brand-100 text-brand-700 py-1 px-2 rounded text-sm">1</span> OSINGPEDIA
-                    </h3>
-                    <p class="text-sm font-semibold text-slate-800 mb-3">Digital Ethnobotanical Knowledge Center</p>
-                    <ul class="text-sm text-slate-600 space-y-2 list-disc pl-4">
-                        <li>Katalog tanaman obat terverifikasi</li>
-                        <li>Nama lokal, ilmiah, dan karakteristik</li>
-                        <li>Dokumentasi pemanfaatan tradisional</li>
-                        <li>Cerita dan pengetahuan tokoh adat</li>
-                    </ul>
+                    <div class="relative z-10 max-w-2xl">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-kunir-300 text-xs font-semibold mb-4">
+                            <i class="fa-solid fa-sparkles"></i>
+                            <span>Digital Ethnobotanical Health, Heritage & Green Economy</span>
+                        </div>
+                        <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight mb-3">
+                            Melestarikan Tanaman Obat, Merawat Warisan <span class="text-kunir-400">Osing Kemiren</span>
+                        </h1>
+                        <p class="text-sm sm:text-base text-osing-100/90 leading-relaxed mb-6">
+                            Jelajahi ensiklopedia etnobotani masyarakat Osing, peta wisata kebun TOGA interaktif, bukti fitokimia ilmiah, hingga ketertelusuran produk UMKM lokal.
+                        </p>
+                        <!-- Interactive Hero Search -->
+                        <div class="flex flex-col sm:flex-row gap-2.5">
+                            <div class="relative flex-1">
+                                <i class="fa-solid fa-magnifying-glass absolute left-4 top-3.5 text-slate-400"></i>
+                                <input type="text" placeholder="Ketik nama tanaman (misal: Kunir Putih, Kelor, Jae Abang)..." 
+                                    onkeydown="if(event.key==='Enter') handleGlobalSearch(this.value)"
+                                    class="w-full pl-11 pr-4 py-3 rounded-2xl bg-white text-slate-900 text-sm font-medium placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-kunir-400 shadow">
+                            </div>
+                            <button onclick="navigateTo('jelajah')" class="px-5 py-3 rounded-2xl bg-kunir-500 hover:bg-kunir-600 text-osing-950 font-bold text-sm flex items-center justify-center gap-2 shadow-lg transition shrink-0">
+                                <i class="fa-solid fa-compass"></i>
+                                <span>Mulai Jelajah Peta</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- 2 -->
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
-                    <h3 class="text-lg font-bold text-brand-700 flex items-center gap-2 border-b pb-3 mb-4">
-                        <span class="bg-brand-100 text-brand-700 py-1 px-2 rounded text-sm">2</span> JELAJAH OSING
-                    </h3>
-                    <p class="text-sm font-semibold text-slate-800 mb-3">Interactive Herbal & Cultural Tourism Map</p>
-                    <ul class="text-sm text-slate-600 space-y-2 list-disc pl-4">
-                        <li>Peta digital kebun TOGA</li>
-                        <li>Rute wisata edukasi herbal</li>
-                        <li>Lokasi demonstrasi pengolahan</li>
-                        <li>QR Code di titik edukasi nyata</li>
-                    </ul>
+                <!-- Live Ecosystem Stats -->
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-7">
+                    <div onclick="navigateTo('osingpedia')" class="cursor-pointer bg-white p-4 rounded-2xl border border-slate-200/80 shadow-xs hover:border-osing-400 transition">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="w-9 h-9 rounded-xl bg-osing-100 text-osing-700 flex items-center justify-center"><i class="fa-solid fa-book-medical"></i></span>
+                            <span class="text-xs font-bold text-osing-700 bg-osing-50 px-2 py-0.5 rounded-full">Terverifikasi</span>
+                        </div>
+                        <div class="text-2xl font-extrabold text-slate-900">42 Spesies</div>
+                        <div class="text-xs text-slate-500 mt-0.5">Tanaman Obat Etnobotani</div>
+                    </div>
+                    <div onclick="navigateTo('jelajah')" class="cursor-pointer bg-white p-4 rounded-2xl border border-slate-200/80 shadow-xs hover:border-osing-400 transition">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="w-9 h-9 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center"><i class="fa-solid fa-map-pin"></i></span>
+                            <span class="text-xs font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded-full">QR Aktif</span>
+                        </div>
+                        <div class="text-2xl font-extrabold text-slate-900">12 Titik</div>
+                        <div class="text-xs text-slate-500 mt-0.5">Kebun TOGA & Sanggar</div>
+                    </div>
+                    <div onclick="navigateTo('herbascience')" class="cursor-pointer bg-white p-4 rounded-2xl border border-slate-200/80 shadow-xs hover:border-osing-400 transition">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="w-9 h-9 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center"><i class="fa-solid fa-atom"></i></span>
+                            <span class="text-xs font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded-full">DOI Jurnal</span>
+                        </div>
+                        <div class="text-2xl font-extrabold text-slate-900">68 Senyawa</div>
+                        <div class="text-xs text-slate-500 mt-0.5">Profil Metabolit Sekunder</div>
+                    </div>
+                    <div onclick="navigateTo('pasar')" class="cursor-pointer bg-white p-4 rounded-2xl border border-slate-200/80 shadow-xs hover:border-osing-400 transition">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="w-9 h-9 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center"><i class="fa-solid fa-store"></i></span>
+                            <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full">HerbaGuard</span>
+                        </div>
+                        <div class="text-2xl font-extrabold text-slate-900">18 UMKM</div>
+                        <div class="text-xs text-slate-500 mt-0.5">Produk Herbal Kemiren</div>
+                    </div>
                 </div>
 
-                <!-- 3 -->
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
-                    <h3 class="text-lg font-bold text-brand-700 flex items-center gap-2 border-b pb-3 mb-4">
-                        <span class="bg-brand-100 text-brand-700 py-1 px-2 rounded text-sm">3</span> HERBASCIENCE
-                    </h3>
-                    <p class="text-sm font-semibold text-slate-800 mb-3">Traditional Knowledge Meets Science</p>
-                    <ul class="text-sm text-slate-600 space-y-2 list-disc pl-4">
-                        <li>Informasi fitokimia & senyawa bioaktif</li>
-                        <li>Ringkasan penelitian ilmiah</li>
-                        <li>Mekanisme biologis & jurnal (DOI)</li>
-                        <li>Klasifikasi tingkat bukti ilmiah</li>
-                    </ul>
+                <!-- 3 CORE INNOVATIONS -->
+                <div class="mb-8">
+                    <div class="flex items-center justify-between mb-4">
+                        <div>
+                            <h2 class="text-lg sm:text-xl font-extrabold text-slate-900">Tiga Inti Inovasi (Core Innovation)</h2>
+                            <p class="text-xs sm:text-sm text-slate-500">Pilar utama penghubung kearifan lokal Osing dan sains modern</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <!-- Core 1 -->
+                        <div onclick="navigateTo('osingpedia')" class="cursor-pointer group bg-white rounded-2xl p-5 border border-slate-200 hover:border-osing-500 shadow-xs hover:shadow-md transition flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center justify-between mb-3">
+                                    <span class="px-2.5 py-1 rounded-lg bg-osing-100 text-osing-800 text-xs font-extrabold">CORE INNOVATION 1</span>
+                                    <i class="fa-solid fa-arrow-right text-slate-400 group-hover:text-osing-700 group-hover:translate-x-1 transition"></i>
+                                </div>
+                                <h3 class="text-lg font-extrabold text-slate-900 mb-1.5">OSINGPEDIA</h3>
+                                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                                    Basis data etnobotani yang mendokumentasikan tanaman obat dan pengetahuan tradisional masyarakat Osing beserta morfologi & cerita narasumber.
+                                </p>
+                            </div>
+                            <div class="mt-4 pt-3 border-t border-slate-100 text-xs font-bold text-osing-700 flex items-center gap-1.5">
+                                <i class="fa-solid fa-book-open"></i> Buka Ensiklopedia Tanaman
+                            </div>
+                        </div>
+
+                        <!-- Core 2 -->
+                        <div onclick="navigateTo('jelajah')" class="cursor-pointer group bg-gradient-to-br from-osing-800 to-osing-950 text-white rounded-2xl p-5 shadow-md hover:shadow-lg transition flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center justify-between mb-3">
+                                    <span class="px-2.5 py-1 rounded-lg bg-kunir-500 text-osing-950 text-xs font-extrabold">CORE INNOVATION 2</span>
+                                    <i class="fa-solid fa-arrow-right text-osing-300 group-hover:translate-x-1 transition"></i>
+                                </div>
+                                <h3 class="text-lg font-extrabold mb-1.5">JELAJAH OSING</h3>
+                                <p class="text-xs sm:text-sm text-osing-100 leading-relaxed">
+                                    Peta wisata edukasi interaktif yang menghubungkan informasi tanaman dengan titik lokasi kebun TOGA, sanggar jamu, dan pemindai QR Code.
+                                </p>
+                            </div>
+                            <div class="mt-4 pt-3 border-t border-white/15 text-xs font-bold text-kunir-300 flex items-center gap-1.5">
+                                <i class="fa-solid fa-map-location-dot"></i> Eksplorasi Peta Desa Kemiren
+                            </div>
+                        </div>
+
+                        <!-- Core 3 -->
+                        <div onclick="navigateTo('herbascience')" class="cursor-pointer group bg-white rounded-2xl p-5 border border-slate-200 hover:border-blue-500 shadow-xs hover:shadow-md transition flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center justify-between mb-3">
+                                    <span class="px-2.5 py-1 rounded-lg bg-blue-100 text-blue-800 text-xs font-extrabold">CORE INNOVATION 3</span>
+                                    <i class="fa-solid fa-arrow-right text-slate-400 group-hover:text-blue-700 group-hover:translate-x-1 transition"></i>
+                                </div>
+                                <h3 class="text-lg font-extrabold text-slate-900 mb-1.5">HERBASCIENCE</h3>
+                                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                                    Jembatan pengetahuan herbal tradisional dengan profil kandungan fitokimia, mekanisme biologis, klasifikasi tingkat bukti, dan referensi DOI.
+                                </p>
+                            </div>
+                            <div class="mt-4 pt-3 border-t border-slate-100 text-xs font-bold text-blue-700 flex items-center gap-1.5">
+                                <i class="fa-solid fa-flask-vial"></i> Telusuri Bukti Ilmiah
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- 4 -->
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
-                    <h3 class="text-lg font-bold text-brand-700 flex items-center gap-2 border-b pb-3 mb-4">
-                        <span class="bg-brand-100 text-brand-700 py-1 px-2 rounded text-sm">4</span> SEHAT OSING
-                    </h3>
-                    <p class="text-sm font-semibold text-slate-800 mb-3">Community Wellness Education</p>
-                    <ul class="text-sm text-slate-600 space-y-2 list-disc pl-4">
-                        <li>Edukasi PHBS & pencegahan penyakit</li>
-                        <li>Panduan pengolahan bahan herbal</li>
-                        <li>Potensi interaksi herbal & obat medis</li>
-                        <li>Informasi batasan & tanda bahaya</li>
-                    </ul>
+                <!-- ALL 8 MODULES QUICK LAUNCHER -->
+                <div>
+                    <h2 class="text-lg font-extrabold text-slate-900 mb-3">Akses Cepat 8 Fitur Ekosistem</h2>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                        ${MENUS.map(m => `
+                            <button onclick="navigateTo('${m.id}')" class="p-4 rounded-2xl bg-white border border-slate-200/90 hover:border-osing-500 hover:bg-osing-50/40 text-left transition flex flex-col justify-between">
+                                <div class="flex items-center justify-between w-full mb-2.5">
+                                    <div class="w-10 h-10 rounded-xl bg-osing-100 text-osing-800 flex items-center justify-center text-base">
+                                        <i class="fa-solid ${m.icon}"></i>
+                                    </div>
+                                    <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-slate-100 text-slate-600">${m.badge}</span>
+                                </div>
+                                <div>
+                                    <div class="font-bold text-sm text-slate-900">${m.label}</div>
+                                    <div class="text-xs text-slate-500 line-clamp-1 mt-0.5">${m.subtitle}</div>
+                                </div>
+                            </button>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        // =============================================================
+        // VIEW 2: OSINGPEDIA (Searchable & Filterable Ethnobotanical Catalog)
+        // =============================================================
+        function renderOsingpedia() {
+            const parts = ['Semua', 'Rimpang', 'Daun', 'Bunga'];
+            const filtered = PLANTS.filter(p => {
+                const matchPart = state.plantFilter === 'Semua' || p.part === state.plantFilter;
+                const q = state.plantSearch.toLowerCase();
+                const matchQuery = !q || 
+                    p.localName.toLowerCase().includes(q) || 
+                    p.osingName.toLowerCase().includes(q) || 
+                    p.scientificName.toLowerCase().includes(q) ||
+                    p.metabolites.some(m => m.toLowerCase().includes(q));
+                return matchPart && matchQuery;
+            });
+
+            return `
+                <div class="bg-white rounded-3xl p-5 sm:p-6 border border-slate-200 shadow-xs mb-6">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-5">
+                        <div>
+                            <span class="text-xs font-extrabold text-osing-700 uppercase tracking-wider">Core Innovation 1 • Digital Ethnobotanical Knowledge Center</span>
+                            <h1 class="text-2xl font-extrabold text-slate-900 mt-0.5">OSINGPEDIA</h1>
+                            <p class="text-sm text-slate-600">Katalog tanaman obat terverifikasi di Desa Kemiren beserta kearifan lokal masyarakat Osing.</p>
+                        </div>
+                        <div class="relative w-full md:w-80">
+                            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3 text-slate-400 text-sm"></i>
+                            <input type="text" value="${state.plantSearch}" oninput="state.plantSearch=this.value; refreshCurrentView();" 
+                                placeholder="Cari nama Osing, ilmiah, senyawa..." 
+                                class="w-full pl-9 pr-8 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm focus:outline-none focus:border-osing-600">
+                            ${state.plantSearch ? `<button onclick="state.plantSearch=''; refreshCurrentView();" class="absolute right-3 top-2.5 text-slate-400 hover:text-slate-700"><i class="fa-solid fa-circle-xmark"></i></button>` : ''}
+                        </div>
+                    </div>
+
+                    <!-- Filter Chips by Plant Part -->
+                    <div class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1">
+                        <span class="text-xs font-semibold text-slate-500 mr-1 shrink-0">Bagian Dimanfaatkan:</span>
+                        ${parts.map(pt => `
+                            <button onclick="state.plantFilter='${pt}'; refreshCurrentView();" 
+                                class="px-4 py-1.5 rounded-full text-xs font-bold transition shrink-0 ${state.plantFilter === pt ? 'bg-osing-800 text-white shadow-xs' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}">
+                                ${pt}
+                            </button>
+                        `).join('')}
+                    </div>
                 </div>
 
-                <!-- 5 -->
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
-                    <h3 class="text-lg font-bold text-brand-700 flex items-center gap-2 border-b pb-3 mb-4">
-                        <span class="bg-brand-100 text-brand-700 py-1 px-2 rounded text-sm">5</span> HERBAGUARD
-                    </h3>
-                    <p class="text-sm font-semibold text-slate-800 mb-3">Herbal Quality & Traceability System</p>
-                    <ul class="text-sm text-slate-600 space-y-2 list-disc pl-4">
-                        <li>Ketertelusuran asal bahan baku</li>
-                        <li>Parameter mutu & hasil lab</li>
-                        <li>Izin edar, sertifikasi & kedaluwarsa</li>
-                        <li>QR Code riwayat produk UMKM</li>
-                    </ul>
+                <!-- Plant Cards Grid -->
+                ${filtered.length === 0 ? `
+                    <div class="bg-white rounded-3xl p-10 text-center border border-slate-200">
+                        <i class="fa-solid fa-seedling text-4xl text-slate-300 mb-3"></i>
+                        <h3 class="font-bold text-slate-800">Tanaman tidak ditemukan</h3>
+                        <p class="text-sm text-slate-500 mt-1">Coba kata kunci lain atau atur ulang filter bagian tanaman.</p>
+                        <button onclick="state.plantFilter='Semua'; state.plantSearch=''; refreshCurrentView();" class="mt-4 px-4 py-2 rounded-xl bg-osing-700 text-white text-xs font-bold">Reset Pencarian</button>
+                    </div>
+                ` : `
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                        ${filtered.map(plant => `
+                            <div onclick="openPlantDetail('${plant.id}')" class="cursor-pointer group bg-white rounded-3xl border border-slate-200/90 overflow-hidden shadow-xs hover:shadow-lg hover:border-osing-500 transition flex flex-col">
+                                <div class="relative h-44 bg-gradient-to-br ${plant.colorTheme} overflow-hidden">
+                                    <img src="${plant.image}" alt="${plant.localName}" onerror="this.style.display='none'" class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition duration-500">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent"></div>
+                                    <div class="absolute top-3 left-3 flex gap-1.5">
+                                        <span class="px-2.5 py-1 rounded-lg bg-white/95 text-slate-900 text-[11px] font-extrabold shadow-xs">${plant.part}</span>
+                                        <span class="px-2.5 py-1 rounded-lg bg-osing-900/85 text-osing-100 text-[11px] font-semibold backdrop-blur-xs">${plant.family}</span>
+                                    </div>
+                                    <div class="absolute bottom-3 left-4 right-4 text-white">
+                                        <div class="text-xs font-bold text-kunir-300">Istilah Osing: "${plant.osingName}"</div>
+                                        <h3 class="font-extrabold text-lg leading-tight">${plant.localName}</h3>
+                                        <p class="text-xs italic text-slate-200">${plant.scientificName}</p>
+                                    </div>
+                                </div>
+                                <div class="p-5 flex-1 flex flex-col justify-between">
+                                    <div>
+                                        <p class="text-xs text-slate-600 line-clamp-3 leading-relaxed mb-3">${plant.traditionalUse}</p>
+                                        <div class="flex flex-wrap gap-1.5 mb-4">
+                                            ${plant.metabolites.slice(0, 3).map(m => `
+                                                <span class="px-2 py-0.5 rounded-md bg-osing-50 text-osing-800 border border-osing-200/70 text-[11px] font-semibold">${m}</span>
+                                            `).join('')}
+                                        </div>
+                                    </div>
+                                    <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-osing-700">
+                                        <span>Lihat Morfologi & Cerita Adat</span>
+                                        <i class="fa-solid fa-chevron-right group-hover:translate-x-1 transition"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                `}
+            `;
+        }
+
+        function openPlantDetail(plantId) {
+            const p = PLANTS.find(item => item.id === plantId);
+            if (!p) return;
+            openModal(`
+                <div class="space-y-5">
+                    <div class="flex items-start justify-between gap-3">
+                        <div>
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="px-2.5 py-0.5 rounded-md bg-osing-100 text-osing-800 text-xs font-bold">Famili ${p.family}</span>
+                                <span class="px-2.5 py-0.5 rounded-md bg-kunir-100 text-kunir-800 text-xs font-bold">Bagian: ${p.part}</span>
+                            </div>
+                            <h2 class="text-2xl font-extrabold text-slate-900">${p.localName}</h2>
+                            <p class="text-sm text-slate-500">Sebutan Osing: <strong class="text-osing-800">${p.osingName}</strong> • <em>${p.scientificName}</em></p>
+                        </div>
+                        <button onclick="closeModal()" class="w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+
+                    <div class="h-48 rounded-2xl overflow-hidden bg-gradient-to-br ${p.colorTheme} relative">
+                        <img src="${p.image}" alt="${p.localName}" onerror="this.style.display='none'" class="w-full h-full object-cover">
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80">
+                            <h4 class="text-xs font-extrabold text-slate-800 uppercase mb-1.5 flex items-center gap-1.5">
+                                <i class="fa-solid fa-eye text-osing-700"></i> Karakteristik Morfologi
+                            </h4>
+                            <p class="text-xs text-slate-600 leading-relaxed">${p.morphology}</p>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-osing-50/70 border border-osing-200">
+                            <h4 class="text-xs font-extrabold text-osing-900 uppercase mb-1.5 flex items-center gap-1.5">
+                                <i class="fa-solid fa-people-roof text-osing-700"></i> Pemanfaatan Masyarakat Osing
+                            </h4>
+                            <p class="text-xs text-slate-700 leading-relaxed">${p.traditionalUse}</p>
+                        </div>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-amber-50/80 border border-amber-200">
+                        <h4 class="text-xs font-extrabold text-amber-900 uppercase mb-1 flex items-center gap-1.5">
+                            <i class="fa-solid fa-quote-left text-amber-600"></i> Pengetahuan Lokal & Narasumber Adat
+                        </h4>
+                        <p class="text-xs text-amber-950 leading-relaxed italic">"${p.elderLore}"</p>
+                    </div>
+
+                    <div>
+                        <h4 class="text-xs font-extrabold text-slate-800 uppercase mb-2">Kandungan Metabolit Sekunder</h4>
+                        <div class="flex flex-wrap gap-1.5">
+                            ${p.metabolites.map(m => `<span class="px-3 py-1 rounded-xl bg-blue-50 text-blue-800 border border-blue-200 text-xs font-semibold">${m}</span>`).join('')}
+                        </div>
+                    </div>
+
+                    <div class="p-3.5 rounded-2xl bg-rose-50 border border-rose-200 text-xs text-rose-900 flex items-start gap-2.5">
+                        <i class="fa-solid fa-circle-info text-rose-600 mt-0.5"></i>
+                        <div><strong>Catatan Keamanan:</strong> ${p.safetyNotes}</div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-2.5 pt-2">
+                        <button onclick="closeModal(); state.sciencePlantId='${p.id}'; navigateTo('herbascience');" class="flex-1 py-3 px-4 rounded-xl bg-blue-700 hover:bg-blue-800 text-white text-xs font-bold flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-flask"></i> Kajian Fitokimia di HerbaScience
+                        </button>
+                        <button onclick="closeModal(); state.interactionPlantId='${p.id}'; navigateTo('sehat');" class="flex-1 py-3 px-4 rounded-xl bg-osing-700 hover:bg-osing-800 text-white text-xs font-bold flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-heart-pulse"></i> Cek Keamanan di Sehat Osing
+                        </button>
+                    </div>
+                </div>
+            `);
+        }
+
+        // =============================================================
+        // VIEW 3: JELAJAH OSING (Interactive Kemiren Herbal Map & Routes)
+        // =============================================================
+        function renderJelajah() {
+            const activeSpot = MAP_SPOTS.find(s => s.id === state.selectedSpotId) || MAP_SPOTS[0];
+            return `
+                <div class="bg-white rounded-3xl p-5 sm:p-6 border border-slate-200 shadow-xs mb-6">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                        <div>
+                            <span class="text-xs font-extrabold text-osing-700 uppercase tracking-wider">Core Innovation 2 • Interactive Herbal & Cultural Tourism Map</span>
+                            <h1 class="text-2xl font-extrabold text-slate-900 mt-0.5">JELAJAH OSING</h1>
+                            <p class="text-sm text-slate-600">Klik penanda lokasi pada peta interaktif Desa Kemiren untuk melihat koleksi tanaman, estimasi rute, dan panduan kunjungan.</p>
+                        </div>
+                        <button onclick="openQrSimulator()" class="px-4 py-2.5 rounded-xl bg-osing-800 hover:bg-osing-900 text-white text-xs font-bold flex items-center justify-center gap-2 shadow shrink-0">
+                            <i class="fa-solid fa-qrcode"></i> Simulasi Scan QR Tanaman
+                        </button>
+                    </div>
                 </div>
 
-                <!-- 6 -->
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
-                    <h3 class="text-lg font-bold text-brand-700 flex items-center gap-2 border-b pb-3 mb-4">
-                        <span class="bg-brand-100 text-brand-700 py-1 px-2 rounded text-sm">6</span> OSING GREENHUB
-                    </h3>
-                    <p class="text-sm font-semibold text-slate-800 mb-3">Sustainable Farming & Empowerment</p>
-                    <ul class="text-sm text-slate-600 space-y-2 list-disc pl-4">
-                        <li>Direktori petani & kalender tanam</li>
-                        <li>Panduan penanaman TOGA</li>
-                        <li>Pemanfaatan limbah organik</li>
-                        <li>Peluang kemitraan UMKM</li>
-                    </ul>
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    <!-- Interactive Visual Map Canvas (Left 7 Cols) -->
+                    <div class="lg:col-span-7 bg-white rounded-3xl p-4 sm:p-5 border border-slate-200 shadow-xs">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex items-center gap-2">
+                                <span class="w-2.5 h-2.5 rounded-full bg-osing-600"></span>
+                                <span class="text-xs font-extrabold text-slate-800">Rute Wisata Edukasi Herbal (Est. 1,3 km • 70 Menit)</span>
+                            </div>
+                            <span class="text-[11px] font-semibold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-lg">Desa Kemiren, Glagah</span>
+                        </div>
+
+                        <!-- Custom Interactive SVG Village Map -->
+                        <div class="relative w-full h-80 sm:h-96 rounded-2xl bg-[#e7f3e8] border-2 border-osing-200 overflow-hidden select-none">
+                            <!-- Stylized Village Terrain, Rice Terraces & Paths -->
+                            <svg viewBox="0 0 100 100" preserveAspectRatio="none" class="w-full h-full">
+                                <!-- Rice field blocks -->
+                                <rect x="5" y="8" width="35" height="22" rx="3" fill="#d3ebd5" />
+                                <rect x="62" y="10" width="32" height="28" rx="3" fill="#d3ebd5" />
+                                <rect x="8" y="58" width="26" height="32" rx="3" fill="#d3ebd5" />
+                                <rect x="65" y="70" width="28" height="22" rx="3" fill="#d3ebd5" />
+                                <!-- River / Irrigation Stream -->
+                                <path d="M 0 48 Q 35 42, 55 55 T 100 62" fill="none" stroke="#93c5fd" stroke-width="2.5" opacity="0.8"/>
+                                <!-- Main Village Road -->
+                                <path d="M 10 25 L 52 26 L 74 52 L 42 72 L 15 85" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <!-- Dashed Walking Route Connecting 4 Spots -->
+                                <path d="M 24 34 L 52 26 L 74 52 L 42 72" fill="none" stroke="#d97706" stroke-width="1.4" stroke-dasharray="2.5,2"/>
+                            </svg>
+
+                            <!-- Map Decorative Labels -->
+                            <div class="absolute top-3 left-3 text-[10px] font-bold text-osing-800/70 uppercase tracking-wider">Area Persawahan Subak Osing</div>
+                            <div class="absolute bottom-3 right-3 text-[10px] font-bold text-blue-700/80"><i class="fa-solid fa-water"></i> Aliran Sungai Gulung</div>
+
+                            <!-- Interactive Map Pins -->
+                            ${MAP_SPOTS.map((spot, idx) => {
+                                const isSelected = spot.id === activeSpot.id;
+                                return `
+                                    <button onclick="state.selectedSpotId='${spot.id}'; refreshCurrentView();" 
+                                        style="left: ${spot.x}%; top: ${spot.y}%;"
+                                        class="absolute -translate-x-1/2 -translate-y-1/2 group focus:outline-none z-10">
+                                        ${isSelected ? `<span class="absolute inset-0 rounded-full bg-kunir-500 animate-ping-slow"></span>` : ''}
+                                        <div class="relative flex flex-col items-center">
+                                            <div class="px-2.5 py-1 rounded-xl text-[11px] font-extrabold shadow-md transition flex items-center gap-1.5 whitespace-nowrap
+                                                ${isSelected ? 'bg-kunir-500 text-osing-950 scale-110 ring-2 ring-white' : 'bg-osing-900 text-white hover:bg-osing-700'}">
+                                                <span>${idx + 1}.</span>
+                                                <span class="hidden sm:inline">${spot.name.split(' ').slice(0, 2).join(' ')}</span>
+                                                <span class="sm:hidden">Titik ${idx + 1}</span>
+                                            </div>
+                                            <div class="w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[7px] ${isSelected ? 'border-t-kunir-500' : 'border-t-osing-900'}"></div>
+                                        </div>
+                                    </button>
+                                `;
+                            }).join('')}
+                        </div>
+
+                        <!-- Horizontal Route Stepper Pills -->
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-4">
+                            ${MAP_SPOTS.map((spot, idx) => `
+                                <button onclick="state.selectedSpotId='${spot.id}'; refreshCurrentView();" 
+                                    class="p-2.5 rounded-xl border text-left transition ${spot.id === activeSpot.id ? 'bg-osing-50 border-osing-600' : 'bg-slate-50 border-slate-200 hover:bg-slate-100'}">
+                                    <div class="text-[10px] font-extrabold text-osing-700">TITIK ${idx + 1} • ${spot.duration}</div>
+                                    <div class="text-xs font-bold text-slate-900 line-clamp-1 mt-0.5">${spot.name}</div>
+                                </button>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <!-- Selected Spot Detail Card (Right 5 Cols) -->
+                    <div class="lg:col-span-5 bg-white rounded-3xl p-5 sm:p-6 border border-slate-200 shadow-xs flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between gap-2 mb-3">
+                                <span class="px-3 py-1 rounded-full bg-kunir-100 text-kunir-800 text-xs font-extrabold">${activeSpot.category}</span>
+                                <span class="text-xs font-bold text-slate-500"><i class="fa-solid fa-route text-osing-600 mr-1"></i>${activeSpot.distance}</span>
+                            </div>
+                            <h2 class="text-xl font-extrabold text-slate-900 mb-2">${activeSpot.name}</h2>
+                            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">${activeSpot.activity}</p>
+
+                            <div class="space-y-2.5 p-4 rounded-2xl bg-slate-50 border border-slate-200/80 text-xs mb-4">
+                                <div class="flex justify-between">
+                                    <span class="text-slate-500">Jam Operasional:</span>
+                                    <span class="font-bold text-slate-800">${activeSpot.hours}</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-slate-500">Estimasi Durasi:</span>
+                                    <span class="font-bold text-osing-700">${activeSpot.duration}</span>
+                                </div>
+                                <div class="pt-2 border-t border-slate-200">
+                                    <span class="text-slate-500 block mb-0.5">Pengelola Lokal:</span>
+                                    <span class="font-bold text-slate-800">${activeSpot.manager}</span>
+                                </div>
+                            </div>
+
+                            <div class="mb-5">
+                                <div class="text-xs font-extrabold text-slate-800 uppercase mb-2">Koleksi Tanaman & Fokus Edukasi:</div>
+                                <div class="flex flex-wrap gap-1.5">
+                                    ${activeSpot.plants.map(pl => `<span class="px-2.5 py-1 rounded-lg bg-osing-50 text-osing-800 border border-osing-200 text-xs font-semibold">${pl}</span>`).join('')}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-2.5">
+                            <button onclick="showToast('Navigasi rute menuju ${activeSpot.name} diaktifkan!')" class="flex-1 py-3 px-4 rounded-xl bg-osing-800 hover:bg-osing-900 text-white text-xs font-bold flex items-center justify-center gap-2 transition">
+                                <i class="fa-solid fa-location-arrow"></i> Pandu ke Titik Ini
+                            </button>
+                            <button onclick="openQrSimulator('${activeSpot.qrCode}')" class="py-3 px-4 rounded-xl bg-kunir-100 hover:bg-kunir-200 text-kunir-900 text-xs font-bold flex items-center justify-center gap-1.5 transition">
+                                <i class="fa-solid fa-qrcode"></i> QR Titik
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // =============================================================
+        // VIEW 4: HERBASCIENCE (Phytochemicals & Scientific Evidence)
+        // =============================================================
+        function renderHerbaScience() {
+            const selectedPlant = PLANTS.find(p => p.id === state.sciencePlantId) || PLANTS[0];
+            const evidenceLevels = ['Semua', 'Uji Klinis', 'Uji Praklinis (In Vitro & Hewan)'];
+
+            return `
+                <div class="bg-gradient-to-r from-slate-900 to-blue-950 text-white rounded-3xl p-5 sm:p-7 shadow-md mb-6">
+                    <span class="text-xs font-extrabold text-blue-300 uppercase tracking-wider">Core Innovation 3 • Traditional Knowledge Meets Scientific Evidence</span>
+                    <h1 class="text-2xl sm:text-3xl font-extrabold mt-1">HERBASCIENCE</h1>
+                    <p class="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl">
+                        Menghubungkan kearifan etnobotani masyarakat Osing dengan profil fitokimia, mekanisme biologis, klasifikasi tingkat bukti, dan referensi jurnal ilmiah terverifikasi.
+                    </p>
                 </div>
 
-                <!-- 7 -->
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
-                    <h3 class="text-lg font-bold text-brand-700 flex items-center gap-2 border-b pb-3 mb-4">
-                        <span class="bg-brand-100 text-brand-700 py-1 px-2 rounded text-sm">7</span> PASAR OSING
-                    </h3>
-                    <p class="text-sm font-semibold text-slate-800 mb-3">Local Herbal Product Marketplace</p>
-                    <ul class="text-sm text-slate-600 space-y-2 list-disc pl-4">
-                        <li>Katalog produk & oleh-oleh lokal</li>
-                        <li>Profil UMKM Desa Kemiren</li>
-                        <li>Fitur pemesanan langsung</li>
-                        <li>Transparansi bahan & pengolahan</li>
-                    </ul>
+                <!-- Plant Selector Pills -->
+                <div class="mb-6">
+                    <div class="text-xs font-bold text-slate-500 uppercase mb-2">Pilih Tanaman untuk Analisis Fitokimia:</div>
+                    <div class="flex gap-2 overflow-x-auto no-scrollbar pb-1">
+                        ${PLANTS.map(p => `
+                            <button onclick="state.sciencePlantId='${p.id}'; refreshCurrentView();" 
+                                class="px-4 py-2.5 rounded-2xl text-xs font-bold border transition shrink-0 flex items-center gap-2
+                                ${p.id === selectedPlant.id ? 'bg-blue-700 text-white border-blue-700 shadow-sm' : 'bg-white text-slate-700 border-slate-200 hover:border-blue-400'}">
+                                <i class="fa-solid ${p.icon}"></i>
+                                <span>${p.localName}</span>
+                            </button>
+                        `).join('')}
+                    </div>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Table Section -->
-    <section id="menu" class="py-20 bg-white">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-10">
-                <h2 class="text-3xl font-bold text-brand-900">Susunan Menu Utama Platform</h2>
-            </div>
-            <div class="overflow-x-auto rounded-xl shadow-sm border border-slate-200">
-                <table class="w-full text-left border-collapse">
-                    <thead>
-                        <tr class="bg-brand-50 text-brand-900 border-b border-brand-200">
-                            <th class="py-4 px-6 font-semibold">Menu</th>
-                            <th class="py-4 px-6 font-semibold">Fungsi</th>
-                        </tr>
-                    </thead>
-                    <tbody class="text-slate-600 divide-y divide-slate-100">
-                        <tr class="hover:bg-slate-50 transition-colors">
-                            <td class="py-3 px-6 font-medium text-slate-800">Beranda</td>
-                            <td class="py-3 px-6">Informasi utama, aktivitas, dan pengenalan Desa TOGA Kemiren</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50 transition-colors">
-                            <td class="py-3 px-6 font-medium text-slate-800">Osingpedia</td>
-                            <td class="py-3 px-6">Ensiklopedia tanaman obat dan pengetahuan etnobotani</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50 transition-colors">
-                            <td class="py-3 px-6 font-medium text-slate-800">Jelajah Osing</td>
-                            <td class="py-3 px-6">Peta lokasi tanaman, kebun, dan wisata edukasi</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50 transition-colors">
-                            <td class="py-3 px-6 font-medium text-slate-800">HerbaScience</td>
-                            <td class="py-3 px-6">Informasi fitokimia dan bukti ilmiah</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50 transition-colors">
-                            <td class="py-3 px-6 font-medium text-slate-800">Sehat Osing</td>
-                            <td class="py-3 px-6">Edukasi kesehatan dan pemanfaatan herbal</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50 transition-colors">
-                            <td class="py-3 px-6 font-medium text-slate-800">HerbaGuard</td>
-                            <td class="py-3 px-6">Informasi mutu dan ketertelusuran produk</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50 transition-colors">
-                            <td class="py-3 px-6 font-medium text-slate-800">Osing GreenHub</td>
-                            <td class="py-3 px-6">Budidaya TOGA dan pemberdayaan masyarakat</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50 transition-colors">
-                            <td class="py-3 px-6 font-medium text-slate-800">Pasar Osing</td>
-                            <td class="py-3 px-6">Katalog produk dan UMKM lokal</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </section>
+                <!-- Scientific Breakdown Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    <!-- Left: Phytochemical Profile -->
+                    <div class="lg:col-span-5 bg-white rounded-3xl p-6 border border-slate-200 shadow-xs space-y-5">
+                        <div>
+                            <span class="px-3 py-1 rounded-full bg-blue-50 text-blue-800 border border-blue-200 text-xs font-extrabold">
+                                Tingkat Bukti: ${selectedPlant.evidenceLevel}
+                            </span>
+                            <h2 class="text-xl font-extrabold text-slate-900 mt-3">${selectedPlant.localName}</h2>
+                            <p class="text-xs italic text-slate-500">${selectedPlant.scientificName} (${selectedPlant.family})</p>
+                        </div>
 
-    <!-- Footer -->
-    <footer class="bg-brand-900 text-brand-100 py-12 border-t border-brand-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-            <div class="flex justify-center items-center gap-2 mb-4">
-                <i class="fa-solid fa-leaf text-brand-500 text-3xl"></i>
-                <span class="font-bold text-2xl text-white">DESA TOGA KEMIREN</span>
-            </div>
-            <p class="max-w-2xl mx-auto text-sm text-brand-200/80 leading-relaxed bg-brand-800/50 p-4 rounded-lg">
-                <strong class="text-white">Catatan Penting:</strong> Katalog tanaman, lokasi kebun, kandungan senyawa, dan informasi mutu produk diisi berdasarkan survei lapangan, dokumentasi masyarakat, serta sumber ilmiah yang dapat diverifikasi. Platform ini memiliki dasar etnobotani dan ilmiah yang kuat.
-            </p>
-            <p class="text-sm mt-8 pt-8 border-t border-brand-800">&copy; 2026 Desa Toga Kemiren. All rights reserved.</p>
-        </div>
-    </footer>
+                        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80">
+                            <h3 class="text-xs font-extrabold text-slate-800 uppercase mb-2.5 flex items-center gap-1.5">
+                                <i class="fa-solid fa-atom text-blue-600"></i> Profil Metabolit Sekunder Utama
+                            </h3>
+                            <div class="space-y-2">
+                                ${selectedPlant.metabolites.map((met, i) => `
+                                    <div class="flex items-center justify-between bg-white px-3 py-2 rounded-xl border border-slate-200/70 text-xs">
+                                        <span class="font-bold text-slate-800">${met}</span>
+                                        <span class="text-[10px] font-semibold px-2 py-0.5 rounded bg-blue-50 text-blue-700">${i === 0 ? 'Senyawa Penanda' : 'Bioaktif'}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
 
+                        <div class="p-4 rounded-2xl bg-blue-50/70 border border-blue-200">
+                            <h3 class="text-xs font-extrabold text-blue-950 uppercase mb-1">Referensi Ilmiah & DOI</h3>
+                            <p class="text-xs font-mono text-blue-900 break-all mb-2">${selectedPlant.doi}</p>
+                            <button onclick="showToast('Tautan referensi DOI disalin ke clipboard!')" class="text-xs font-bold text-blue-700 hover:underline flex items-center gap-1">
+                                <i class="fa-solid fa-copy"></i> Salin Sitasi Ilmiah
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Right: Traditional vs Scientific Comparison -->
+                    <div class="lg:col-span-7 space-y-5">
+                        <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-xs">
+                            <h3 class="text-base font-extrabold text-slate-900 mb-4">Komparasi Pengetahuan Tradisional Osing vs. Bukti Ilmiah</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="p-4 rounded-2xl bg-osing-50/70 border border-osing-200">
+                                    <div class="text-xs font-extrabold text-osing-800 uppercase mb-2 flex items-center gap-1.5">
+                                        <i class="fa-solid fa-mortar-pestle"></i> Kearifan Lokal Osing
+                                    </div>
+                                    <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">${selectedPlant.traditionalUse}</p>
+                                </div>
+                                <div class="p-4 rounded-2xl bg-blue-50/70 border border-blue-200">
+                                    <div class="text-xs font-extrabold text-blue-800 uppercase mb-2 flex items-center gap-1.5">
+                                        <i class="fa-solid fa-microscope"></i> Temuan Penelitian Modern
+                                    </div>
+                                    <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">${selectedPlant.scientificSummary}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-xs">
+                            <h3 class="text-sm font-extrabold text-slate-900 uppercase mb-2 flex items-center gap-2">
+                                <i class="fa-solid fa-dna text-blue-600"></i> Mekanisme Biologis & Farmakologis
+                            </h3>
+                            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">${selectedPlant.mechanism}</p>
+
+                            <!-- Evidence Ladder Visual -->
+                            <div class="pt-4 border-t border-slate-100">
+                                <div class="text-xs font-bold text-slate-500 mb-2">Tangga Klasifikasi Bukti Ilmiah:</div>
+                                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center text-[11px] font-bold">
+                                    <div class="p-2 rounded-xl bg-osing-100 text-osing-900 border border-osing-300">1. Empiris Osing ✓</div>
+                                    <div class="p-2 rounded-xl bg-blue-100 text-blue-900 border border-blue-300">2. In Vitro ✓</div>
+                                    <div class="p-2 rounded-xl bg-blue-100 text-blue-900 border border-blue-300">3. Uji Hewan ✓</div>
+                                    <div class="p-2 rounded-xl ${selectedPlant.evidenceLevel === 'Uji Klinis' ? 'bg-emerald-600 text-white shadow-xs' : 'bg-slate-100 text-slate-400'}">
+                                        4. Uji Klinis ${selectedPlant.evidenceLevel === 'Uji Klinis' ? '✓' : '(Tahap Lanjut)'}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // =============================================================
+        // VIEW 5: SEHAT OSING (Interactive Herbal Safety & Wellness Checker)
+        // =============================================================
+        function renderSehatOsing() {
+            const selectedPlant = PLANTS.find(p => p.id === state.interactionPlantId) || PLANTS[0];
+            const conditions = ['Umum / Sehat', 'Pengencer Darah', 'Ibu Hamil', 'Lambung'];
+            const result = selectedPlant.interactionRisk[state.interactionCondition] || selectedPlant.interactionRisk['Umum / Sehat'];
+
+            const badgeStyle = result.level.includes('Waspada') || result.level.includes('Hindari') || result.level.includes('Konsultasi')
+                ? 'bg-amber-100 text-amber-900 border-amber-300'
+                : 'bg-emerald-100 text-emerald-900 border-emerald-300';
+
+            return `
+                <div class="bg-white rounded-3xl p-5 sm:p-6 border border-slate-200 shadow-xs mb-6">
+                    <span class="text-xs font-extrabold text-osing-700 uppercase tracking-wider">Community Wellness & Herbal Health Education</span>
+                    <h1 class="text-2xl font-extrabold text-slate-900 mt-0.5">SEHAT OSING</h1>
+                    <p class="text-sm text-slate-600">Edukasi pemanfaatan tanaman obat secara bijak, panduan pengolahan higienis, dan simulasi cek keamanan herbal.</p>
+                </div>
+
+                <!-- Interactive Safety & Interaction Checker -->
+                <div class="bg-white rounded-3xl p-5 sm:p-7 border-2 border-osing-200 shadow-sm mb-6">
+                    <div class="flex items-center gap-2.5 mb-4">
+                        <div class="w-10 h-10 rounded-xl bg-osing-100 text-osing-800 flex items-center justify-center text-lg">
+                            <i class="fa-solid fa-stethoscope"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-lg font-extrabold text-slate-900">Cek Keamanan & Potensi Interaksi Herbal</h2>
+                            <p class="text-xs text-slate-500">Pilih tanaman herbal dan kondisi kesehatan/obat yang sedang dikonsumsi</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1.5">1. Pilih Tanaman Obat:</label>
+                            <select onchange="state.interactionPlantId=this.value; refreshCurrentView();" 
+                                class="w-full p-3 rounded-xl bg-slate-50 border border-slate-200 text-sm font-semibold text-slate-800 focus:outline-none focus:border-osing-600">
+                                ${PLANTS.map(p => `<option value="${p.id}" ${p.id === state.interactionPlantId ? 'selected' : ''}>${p.localName} (${p.osingName})</option>`).join('')}
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1.5">2. Kondisi Kesehatan / Obat Rutin:</label>
+                            <div class="grid grid-cols-2 gap-2">
+                                ${conditions.map(c => `
+                                    <button onclick="state.interactionCondition='${c}'; refreshCurrentView();" 
+                                        class="py-2.5 px-3 rounded-xl text-xs font-bold border transition ${state.interactionCondition === c ? 'bg-osing-800 text-white border-osing-800' : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'}">
+                                        ${c}
+                                    </button>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Result Box -->
+                    <div class="p-5 rounded-2xl border ${badgeStyle}">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-extrabold uppercase tracking-wide">Status Rekomendasi (${selectedPlant.localName} + ${state.interactionCondition})</span>
+                            <span class="px-3 py-1 rounded-full bg-white/80 text-xs font-extrabold shadow-2xs">${result.level}</span>
+                        </div>
+                        <p class="text-xs sm:text-sm leading-relaxed font-medium">${result.msg}</p>
+                    </div>
+                </div>
+
+                <!-- PHBS & Safe Herbal Handling Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center mb-3">
+                            <i class="fa-solid fa-hands-bubbles"></i>
+                        </div>
+                        <h3 class="font-extrabold text-sm text-slate-900 mb-1.5">Pengolahan & Penyimpanan Higienis</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">Cuci rimpang/daun di air mengalir untuk menghilangkan tanah. Gunakan panci stainless steel atau gerabah tanah liat (hindari panci aluminium) saat merebus simplisia.</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200">
+                        <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center mb-3">
+                            <i class="fa-solid fa-scale-balanced"></i>
+                        </div>
+                        <h3 class="font-extrabold text-sm text-slate-900 mb-1.5">Batasan Penggunaan Bijak</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">Herbal berperan sebagai pendukung kebugaran (promotif & preventif), bukan pengganti obat emergensi medis. Beri jeda minimal 2 jam bila mengonsumsi obat resep dokter.</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200">
+                        <div class="w-10 h-10 rounded-xl bg-rose-100 text-rose-700 flex items-center justify-center mb-3">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                        </div>
+                        <h3 class="font-extrabold text-sm text-slate-900 mb-1.5">Tanda Bahaya & Konsultasi Medis</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">Hentikan pemakaian dan segera hubungi Puskesmas/tenaga kesehatan apabila muncul reaksi alergi (gatal, ruam), mual hebat, pusing, atau gejala tidak membaik setelah 3 hari.</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        // =============================================================
+        // VIEW 6: HERBAGUARD (Product Quality & Traceability System)
+        // =============================================================
+        function renderHerbaGuard() {
+            const batch = BATCHES[state.batchInput.toUpperCase()];
+            const sampleCodes = Object.keys(BATCHES);
+
+            return `
+                <div class="bg-white rounded-3xl p-5 sm:p-6 border border-slate-200 shadow-xs mb-6">
+                    <span class="text-xs font-extrabold text-osing-700 uppercase tracking-wider">Herbal Quality & Traceability System</span>
+                    <h1 class="text-2xl font-extrabold text-slate-900 mt-0.5">HERBAGUARD</h1>
+                    <p class="text-sm text-slate-600">Lacak asal bahan baku petani Kemiren, tahapan pengolahan higienis, parameter uji mutu, serta sertifikasi produk UMKM.</p>
+
+                    <!-- Batch Input Form -->
+                    <div class="mt-5 flex flex-col sm:flex-row gap-2.5 max-w-xl">
+                        <input type="text" value="${state.batchInput}" oninput="state.batchInput=this.value.toUpperCase(); refreshCurrentView();" 
+                            placeholder="Masukkan Kode Batch QR (Contoh: KMR-2026-001)"
+                            class="flex-1 px-4 py-3 rounded-xl bg-slate-50 border border-slate-300 text-sm font-mono font-bold uppercase focus:outline-none focus:border-osing-600">
+                        <button onclick="refreshCurrentView(); showToast('Data ketertelusuran batch diperbarui!');" class="px-5 py-3 rounded-xl bg-osing-800 text-white text-xs font-bold flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-shield-check"></i> Verifikasi Batch
+                        </button>
+                    </div>
+
+                    <!-- Quick Sample Batch Chips -->
+                    <div class="mt-3 flex flex-wrap items-center gap-2">
+                        <span class="text-xs text-slate-500">Coba Kode QR Sampel:</span>
+                        ${sampleCodes.map(c => `
+                            <button onclick="state.batchInput='${c}'; refreshCurrentView();" 
+                                class="px-3 py-1 rounded-lg font-mono text-xs font-bold border transition ${state.batchInput.toUpperCase() === c ? 'bg-kunir-500 text-osing-950 border-kunir-600' : 'bg-slate-100 text-slate-700 border-slate-200 hover:bg-slate-200'}">
+                                ${c}
+                            </button>
+                        `).join('')}
+                    </div>
+                </div>
+
+                ${!batch ? `
+                    <div class="bg-white rounded-3xl p-8 text-center border border-slate-200">
+                        <i class="fa-solid fa-qrcode text-4xl text-slate-300 mb-3"></i>
+                        <h3 class="font-bold text-slate-800">Kode Batch Tidak Ditemukan</h3>
+                        <p class="text-xs text-slate-500 mt-1">Silakan pilih salah satu kode sampel di atas (KMR-2026-001, KMR-2026-002, atau KMR-2026-003).</p>
+                    </div>
+                ` : `
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                        <!-- Left: Product Identity & Certifications -->
+                        <div class="lg:col-span-5 bg-white rounded-3xl p-6 border border-slate-200 shadow-xs space-y-4">
+                            <div class="flex items-center justify-between">
+                                <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-extrabold flex items-center gap-1.5">
+                                    <i class="fa-solid fa-circle-check"></i> Lolos Verifikasi Mutu
+                                </span>
+                                <span class="font-mono text-xs font-bold text-slate-500">${batch.code}</span>
+                            </div>
+
+                            <div>
+                                <h2 class="text-xl font-extrabold text-slate-900">${batch.productName}</h2>
+                                <p class="text-sm font-semibold text-osing-700 mt-0.5">${batch.umkm}</p>
+                            </div>
+
+                            <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2 text-xs">
+                                <div>
+                                    <span class="text-slate-500 block">Asal Bahan Baku & Petani:</span>
+                                    <span class="font-bold text-slate-800">${batch.farmOrigin}</span>
+                                </div>
+                                <div class="grid grid-cols-3 gap-2 pt-2 border-t border-slate-200">
+                                    <div>
+                                        <span class="text-slate-500 block">Panen</span>
+                                        <span class="font-bold text-slate-800">${batch.harvestDate}</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-slate-500 block">Produksi</span>
+                                        <span class="font-bold text-slate-800">${batch.prodDate}</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-slate-500 block">Kedaluwarsa</span>
+                                        <span class="font-bold text-rose-700">${batch.expDate}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="text-xs font-extrabold text-slate-800 uppercase mb-2">Izin Edar & Sertifikasi:</div>
+                                <div class="space-y-1.5">
+                                    ${batch.certifications.map(cert => `
+                                        <div class="px-3 py-2 rounded-xl bg-osing-50 border border-osing-200 text-xs font-bold text-osing-900 flex items-center gap-2">
+                                            <i class="fa-solid fa-award text-kunir-600"></i> ${cert}
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right: Processing Timeline & Lab Quality Parameters -->
+                        <div class="lg:col-span-7 space-y-5">
+                            <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-xs">
+                                <h3 class="text-base font-extrabold text-slate-900 mb-4">Alur Ketertelusuran Proses Produksi</h3>
+                                <div class="space-y-3">
+                                    ${batch.processSteps.map((step, i) => `
+                                        <div class="flex items-start gap-3">
+                                            <div class="w-7 h-7 rounded-full bg-osing-800 text-white text-xs font-extrabold flex items-center justify-center shrink-0 mt-0.5">${i + 1}</div>
+                                            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200/80 text-xs sm:text-sm text-slate-700 flex-1">${step}</div>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+
+                            <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-xs">
+                                <h3 class="text-base font-extrabold text-slate-900 mb-3">Parameter Mutu & Pengujian Laboratorium</h3>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                                    <div class="p-3.5 rounded-2xl bg-emerald-50/70 border border-emerald-200">
+                                        <span class="text-slate-500 block">Kadar Air Simplisia</span>
+                                        <span class="font-extrabold text-emerald-900 text-sm">${batch.labParams.kadarAir}</span>
+                                    </div>
+                                    <div class="p-3.5 rounded-2xl bg-emerald-50/70 border border-emerald-200">
+                                        <span class="text-slate-500 block">Uji Cemaran Mikroba</span>
+                                        <span class="font-extrabold text-emerald-900 text-sm">${batch.labParams.cemaranMikroba}</span>
+                                    </div>
+                                    <div class="p-3.5 rounded-2xl bg-blue-50/70 border border-blue-200">
+                                        <span class="text-slate-500 block">Penanda Bioaktif</span>
+                                        <span class="font-extrabold text-blue-900 text-sm">${batch.labParams.kadarKurkuminoid || batch.labParams.aktivitasAntioksidan || batch.labParams.kadarMinyakAtsiri}</span>
+                                    </div>
+                                    <div class="p-3.5 rounded-2xl bg-amber-50/70 border border-amber-200">
+                                        <span class="text-slate-500 block">Kemurnian Bahan</span>
+                                        <span class="font-extrabold text-amber-900 text-sm">${batch.labParams.bahanTambahan}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `}
+            `;
+        }
+
+        // =============================================================
+        // VIEW 7: OSING GREENHUB (Sustainable Herbal Farming & Community)
+        // =============================================================
+        function renderGreenHub() {
+            const calendarData = [
+                { plant: 'Kunir Putih & Temulawak', tanam: 'Awal Musim Hujan (Okt–Nov)', panen: '8–10 Bulan (Jul–Agt)', tips: 'Gunakan naungan parsial 30% dan pupuk kompos limbah daun.' },
+                { plant: 'Jahe Merah (Jae Abang)', tanam: 'November – Desember', panen: '8–9 Bulan (Agt–Sep)', tips: 'Media tanam gembur berdrainase baik (polybag/bedengan) untuk mencegah busuk rimpang.' },
+                { plant: 'Daun Kelor (Godong Kelor)', tanam: 'Sepanjang Tahun (Stek Batang)', panen: 'Mulai Bulan ke-3 (Panen Rutin)', tips: 'Pemangkasan tajuk berkala merangsang tunas daun muda yang kaya nutrisi.' },
+                { plant: 'Serai Wangi & Bunga Telang', tanam: 'Sepanjang Tahun', panen: '3–4 Bulan (Serai) / 2 Bulan (Telang)', tips: 'Ampas sulingan serai dapat diolah kembali menjadi mulsa organik kebun.' }
+            ];
+
+            return `
+                <div class="bg-white rounded-3xl p-5 sm:p-6 border border-slate-200 shadow-xs mb-6">
+                    <span class="text-xs font-extrabold text-osing-700 uppercase tracking-wider">Sustainable Herbal Farming & Community Empowerment</span>
+                    <h1 class="text-2xl font-extrabold text-slate-900 mt-0.5">OSING GREENHUB</h1>
+                    <p class="text-sm text-slate-600">Pusat budidaya tanaman obat berkelanjutan, kalender tanam-panen, pengelolaan limbah organik, dan direktori kelompok tani Kemiren.</p>
+                </div>
+
+                <!-- Planting & Harvest Calendar -->
+                <div class="bg-white rounded-3xl p-5 sm:p-6 border border-slate-200 shadow-xs mb-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-lg font-extrabold text-slate-900 flex items-center gap-2">
+                            <i class="fa-solid fa-calendar-days text-osing-700"></i> Kalender Tanam & Panen TOGA Kemiren
+                        </h2>
+                        <span class="text-xs font-bold px-3 py-1 rounded-full bg-osing-50 text-osing-800 border border-osing-200">Iklim Banyuwangi</span>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        ${calendarData.map(item => `
+                            <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/90">
+                                <h3 class="font-extrabold text-sm text-osing-900 mb-2">${item.plant}</h3>
+                                <div class="grid grid-cols-2 gap-2 text-xs mb-2.5">
+                                    <div class="bg-white p-2 rounded-xl border border-slate-200/70">
+                                        <span class="text-slate-400 block text-[10px] uppercase font-bold">Waktu Tanam</span>
+                                        <span class="font-bold text-slate-800">${item.tanam}</span>
+                                    </div>
+                                    <div class="bg-white p-2 rounded-xl border border-slate-200/70">
+                                        <span class="text-slate-400 block text-[10px] uppercase font-bold">Estimasi Panen</span>
+                                        <span class="font-bold text-kunir-700">${item.panen}</span>
+                                    </div>
+                                </div>
+                                <p class="text-xs text-slate-600"><i class="fa-solid fa-lightbulb text-kunir-500 mr-1"></i> ${item.tips}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <!-- Farmer Directory & Circular Economy -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    <div class="lg:col-span-7 bg-white rounded-3xl p-6 border border-slate-200 shadow-xs">
+                        <h3 class="text-base font-extrabold text-slate-900 mb-4">Direktori Kelompok Budidaya & Kemitraan</h3>
+                        <div class="space-y-3">
+                            <div class="p-4 rounded-2xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                                <div>
+                                    <div class="font-extrabold text-sm text-slate-900">KWT Srikandi Osing Kemiren</div>
+                                    <div class="text-xs text-slate-500">Fokus: Kelor Organik, Bunga Telang & Kebun TOGA Pekarangan (28 Anggota)</div>
+                                </div>
+                                <button onclick="showToast('Permintaan kemitraan dengan KWT Srikandi Osing tercatat!')" class="px-3.5 py-2 rounded-xl bg-osing-100 hover:bg-osing-200 text-osing-900 text-xs font-bold shrink-0">Ajukan Kemitraan</button>
+                            </div>
+                            <div class="p-4 rounded-2xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                                <div>
+                                    <div class="font-extrabold text-sm text-slate-900">Kelompok Tani Subak Krajan Wetan</div>
+                                    <div class="text-xs text-slate-500">Fokus: Budidaya Rimpang Kunir Putih, Temulawak & Jahe Merah (35 Anggota)</div>
+                                </div>
+                                <button onclick="showToast('Permintaan kemitraan dengan Poktan Krajan Wetan tercatat!')" class="px-3.5 py-2 rounded-xl bg-osing-100 hover:bg-osing-200 text-osing-900 text-xs font-bold shrink-0">Ajukan Kemitraan</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-5 bg-gradient-to-br from-osing-800 to-osing-950 text-white rounded-3xl p-6 shadow-md flex flex-col justify-between">
+                        <div>
+                            <span class="px-2.5 py-1 rounded-lg bg-white/15 text-kunir-300 text-xs font-extrabold">CIRCULAR GREEN ECONOMY</span>
+                            <h3 class="text-lg font-extrabold mt-3 mb-2">Pengolahan Limbah Organik Herbal</h3>
+                            <p class="text-xs sm:text-sm text-osing-100 leading-relaxed mb-4">
+                                Ampas perasan jamu, sisa rajangan rimpang, dan batang serai diolah melalui komposter aerobik menjadi pupuk organik padat dan eko-enzim yang dikembalikan ke kebun TOGA warga.
+                            </p>
+                        </div>
+                        <div class="p-3.5 rounded-2xl bg-white/10 border border-white/15 text-xs">
+                            <strong>Dampak Komunitas:</strong> Mengurangi 100% limbah organik produksi jamu UMKM sekaligus menekan biaya pupuk petani hingga 40%.
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // =============================================================
+        // VIEW 8: PASAR OSING (UMKM Marketplace & Interactive Cart)
+        // =============================================================
+        function renderPasarOsing() {
+            const categories = ['Semua', 'Minuman Herbal', 'Teh Rempah', 'Perawatan Alami', 'Paket Wisata'];
+            const filteredProducts = PRODUCTS.filter(p => state.marketCategory === 'Semua' || p.category === state.marketCategory);
+
+            const cartTotal = state.cart.reduce((sum, item) => {
+                const prod = PRODUCTS.find(p => p.id === item.productId);
+                return sum + (prod ? prod.price * item.qty : 0);
+            }, 0);
+
+            return `
+                <div class="bg-white rounded-3xl p-5 sm:p-6 border border-slate-200 shadow-xs mb-6">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+                        <div>
+                            <span class="text-xs font-extrabold text-osing-700 uppercase tracking-wider">Local Herbal Product & UMKM Marketplace</span>
+                            <h1 class="text-2xl font-extrabold text-slate-900 mt-0.5">PASAR OSING</h1>
+                            <p class="text-sm text-slate-600">Produk herbal unggulan dan oleh-oleh wisata edukasi UMKM Desa Kemiren yang terintegrasi dengan HerbaGuard.</p>
+                        </div>
+                        <button onclick="openCartModal()" class="px-4 py-3 rounded-2xl bg-kunir-500 hover:bg-kunir-600 text-osing-950 font-extrabold text-xs flex items-center justify-center gap-2 shadow shrink-0">
+                            <i class="fa-solid fa-bag-shopping"></i>
+                            <span>Keranjang (${state.cart.reduce((a, b) => a + b.qty, 0)}) • Rp ${cartTotal.toLocaleString('id-ID')}</span>
+                        </button>
+                    </div>
+
+                    <!-- Category Filter -->
+                    <div class="flex gap-2 overflow-x-auto no-scrollbar pb-1">
+                        ${categories.map(cat => `
+                            <button onclick="state.marketCategory='${cat}'; refreshCurrentView();" 
+                                class="px-4 py-1.5 rounded-full text-xs font-bold transition shrink-0 ${state.marketCategory === cat ? 'bg-osing-800 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}">
+                                ${cat}
+                            </button>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <!-- Product Catalog Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                    ${filteredProducts.map(prod => `
+                        <div class="bg-white rounded-3xl border border-slate-200/90 p-5 shadow-xs hover:shadow-md transition flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-start justify-between gap-3 mb-4">
+                                    <div class="w-14 h-14 rounded-2xl ${prod.color} flex items-center justify-center text-2xl shrink-0">
+                                        <i class="fa-solid ${prod.icon}"></i>
+                                    </div>
+                                    <div class="text-right">
+                                        <span class="inline-flex items-center gap-1 text-xs font-bold text-amber-600">
+                                            <i class="fa-solid fa-star"></i> ${prod.rating} (${prod.sold} terjual)
+                                        </span>
+                                        <div class="mt-1">
+                                            <button onclick="state.batchInput='${prod.batchCode}'; navigateTo('herbaguard');" 
+                                                class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200 hover:bg-emerald-100">
+                                                <i class="fa-solid fa-shield-check"></i> ${prod.batchCode}
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <span class="text-[11px] font-bold text-osing-700">${prod.umkm}</span>
+                                <h3 class="font-extrabold text-base text-slate-900 mt-0.5 mb-2">${prod.name}</h3>
+                                <p class="text-xs text-slate-600 leading-relaxed mb-4">${prod.desc}</p>
+                            </div>
+
+                            <div class="pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
+                                <div>
+                                    <span class="text-[10px] text-slate-400 block">Harga UMKM</span>
+                                    <span class="text-base font-extrabold text-slate-900">Rp ${prod.price.toLocaleString('id-ID')}</span>
+                                </div>
+                                <button onclick="addToCart('${prod.id}')" class="px-4 py-2.5 rounded-xl bg-osing-800 hover:bg-osing-900 text-white text-xs font-bold flex items-center gap-1.5 transition">
+                                    <i class="fa-solid fa-plus"></i> Keranjang
+                                </button>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        // -------------------------------------------------------------
+        // 9. CART, QR SIMULATOR & MODAL HELPERS
+        // -------------------------------------------------------------
+        function addToCart(productId) {
+            const existing = state.cart.find(c => c.productId === productId);
+            if (existing) {
+                existing.qty += 1;
+            } else {
+                state.cart.push({ productId, qty: 1 });
+            }
+            updateCartBadges();
+            const prod = PRODUCTS.find(p => p.id === productId);
+            showToast(`"${prod.name}" ditambahkan ke keranjang!`);
+            if (state.currentTab === 'pasar') refreshCurrentView();
+        }
+
+        function updateCartQty(productId, delta) {
+            const idx = state.cart.findIndex(c => c.productId === productId);
+            if (idx === -1) return;
+            state.cart[idx].qty += delta;
+            if (state.cart[idx].qty <= 0) {
+                state.cart.splice(idx, 1);
+            }
+            updateCartBadges();
+            openCartModal();
+            if (state.currentTab === 'pasar') refreshCurrentView();
+        }
+
+        function updateCartBadges() {
+            const totalItems = state.cart.reduce((sum, item) => sum + item.qty, 0);
+            const deskBadge = document.getElementById('desktopCartBadge');
+            const mobBadge = document.getElementById('mobileCartBadge');
+            if (deskBadge) deskBadge.textContent = totalItems;
+            if (mobBadge) {
+                mobBadge.textContent = totalItems;
+                mobBadge.classList.toggle('hidden', totalItems === 0);
+            }
+        }
+
+        function openCartModal() {
+            const itemsHtml = state.cart.length === 0 ? `
+                <div class="text-center py-8">
+                    <i class="fa-solid fa-bag-shopping text-4xl text-slate-300 mb-2"></i>
+                    <p class="text-sm font-bold text-slate-700">Keranjang belanja masih kosong</p>
+                    <p class="text-xs text-slate-500 mt-1">Pilih produk herbal unggulan UMKM Desa Kemiren.</p>
+                </div>
+            ` : state.cart.map(item => {
+                const p = PRODUCTS.find(prod => prod.id === item.productId);
+                return `
+                    <div class="flex items-center justify-between gap-3 p-3 rounded-2xl bg-slate-50 border border-slate-200">
+                        <div class="min-w-0 flex-1">
+                            <div class="font-bold text-xs sm:text-sm text-slate-900 truncate">${p.name}</div>
+                            <div class="text-xs text-osing-700 font-semibold">Rp ${(p.price * item.qty).toLocaleString('id-ID')}</div>
+                        </div>
+                        <div class="flex items-center gap-2 shrink-0">
+                            <button onclick="updateCartQty('${p.id}', -1)" class="w-7 h-7 rounded-lg bg-white border border-slate-300 text-xs font-bold">-</button>
+                            <span class="text-xs font-extrabold w-5 text-center">${item.qty}</span>
+                            <button onclick="updateCartQty('${p.id}', 1)" class="w-7 h-7 rounded-lg bg-osing-800 text-white text-xs font-bold">+</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            const total = state.cart.reduce((sum, item) => {
+                const p = PRODUCTS.find(prod => prod.id === item.productId);
+                return sum + (p ? p.price * item.qty : 0);
+            }, 0);
+
+            openModal(`
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-lg font-extrabold text-slate-900">Keranjang Belanja Pasar Osing</h3>
+                        <button onclick="closeModal()" class="w-8 h-8 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
+                    </div>
+                    <div class="space-y-2.5 max-h-72 overflow-y-auto">
+                        ${itemsHtml}
+                    </div>
+                    ${state.cart.length > 0 ? `
+                        <div class="pt-3 border-t border-slate-200 flex items-center justify-between">
+                            <span class="text-sm font-bold text-slate-600">Total Estimasi:</span>
+                            <span class="text-xl font-extrabold text-osing-900">Rp ${total.toLocaleString('id-ID')}</span>
+                        </div>
+                        <button onclick="checkoutOrder()" class="w-full py-3.5 rounded-2xl bg-osing-800 hover:bg-osing-900 text-white font-bold text-sm flex items-center justify-center gap-2 shadow">
+                            <i class="fa-brands fa-whatsapp text-base"></i> Buat Pesanan ke Koperasi UMKM Kemiren
+                        </button>
+                    ` : ''}
+                </div>
+            `);
+        }
+
+        function checkoutOrder() {
+            state.cart = [];
+            updateCartBadges();
+            closeModal();
+            if (state.currentTab === 'pasar') refreshCurrentView();
+            showToast('Pesanan berhasil dibuat & diteruskan ke admin UMKM Kemiren!');
+        }
+
+        function openQrSimulator(presetCode = '') {
+            openModal(`
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="text-lg font-extrabold text-slate-900">Simulasi Pemindai QR Code</h3>
+                            <p class="text-xs text-slate-500">Pindai QR papan nama tanaman kebun atau kemasan produk UMKM</p>
+                        </div>
+                        <button onclick="closeModal()" class="w-8 h-8 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
+                    </div>
+
+                    <!-- Simulated Viewfinder -->
+                    <div class="relative h-44 rounded-2xl bg-slate-900 flex flex-col items-center justify-center text-white overflow-hidden">
+                        <div class="w-28 h-28 border-2 border-kunir-400 rounded-2xl flex items-center justify-center relative">
+                            <i class="fa-solid fa-qrcode text-5xl text-white/80"></i>
+                            <div class="absolute inset-x-0 top-1/2 h-0.5 bg-kunir-400 animate-pulse"></div>
+                        </div>
+                        <span class="text-[11px] text-slate-300 mt-3">Pilih simulasi QR di bawah untuk membuka data digital instan</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                        <button onclick="closeModal(); openPlantDetail('kunir-putih');" class="p-3 rounded-xl border border-osing-200 bg-osing-50 hover:bg-osing-100 text-left">
+                            <div class="text-[10px] font-extrabold text-osing-700">QR PAPAN TANAMAN KEBUN</div>
+                            <div class="text-xs font-bold text-slate-900 mt-0.5">Kunir Pethak (Curcuma zedoaria)</div>
+                        </button>
+                        <button onclick="closeModal(); openPlantDetail('daun-kelor');" class="p-3 rounded-xl border border-osing-200 bg-osing-50 hover:bg-osing-100 text-left">
+                            <div class="text-[10px] font-extrabold text-osing-700">QR PAPAN TANAMAN KEBUN</div>
+                            <div class="text-xs font-bold text-slate-900 mt-0.5">Godong Kelor (Moringa oleifera)</div>
+                        </button>
+                        <button onclick="closeModal(); state.batchInput='KMR-2026-001'; navigateTo('herbaguard');" class="p-3 rounded-xl border border-amber-200 bg-amber-50 hover:bg-amber-100 text-left">
+                            <div class="text-[10px] font-extrabold text-amber-800">QR KEMASAN PRODUK UMKM</div>
+                            <div class="text-xs font-bold text-slate-900 mt-0.5">Batch KMR-2026-001 (HerbaGuard)</div>
+                        </button>
+                        <button onclick="closeModal(); state.selectedSpotId='spot-2'; navigateTo('jelajah');" class="p-3 rounded-xl border border-blue-200 bg-blue-50 hover:bg-blue-100 text-left">
+                            <div class="text-[10px] font-extrabold text-blue-800">QR TITIK WISATA EDUKASI</div>
+                            <div class="text-xs font-bold text-slate-900 mt-0.5">Sanggar Racik Jamu Mbok Yem</div>
+                        </button>
+                    </div>
+                </div>
+            `);
+        }
+
+        function openModal(innerHtml) {
+            const modal = document.getElementById('universalModal');
+            document.getElementById('modalContentBox').innerHTML = innerHtml;
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('universalModal').classList.add('hidden');
+        }
+
+        function refreshCurrentView() {
+            document.getElementById('appViewport').innerHTML = `<div class="view-section">${renderView(state.currentTab)}</div>`;
+        }
+
+        let toastTimer;
+        function showToast(msg) {
+            const box = document.getElementById('toastBox');
+            document.getElementById('toastMessage').textContent = msg;
+            box.classList.remove('hidden');
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => {
+                box.classList.add('hidden');
+            }, 3000);
+        }
+
+        // Boot App on Window Load
+        window.onload = initApp;
+    </script>
 </body>
 </html>
