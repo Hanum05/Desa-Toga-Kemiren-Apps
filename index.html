@@ -14,6 +14,33 @@
                         osing: {
                             50: '#f0fdf4',
                             100: '#dcfce7',
+                            200: '#bbf7d0',
+                            300: '#86efac',
+                            400: '#4ade80',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                            950: '#052e16',
+                        },
+                        kunir: {
+                            50: '#fffbeb',
+                            100: '#fef3c7',
+                            200: '#fde68a',
+                            300: '#fcd34d',
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                            700: '#b45309',
+                            800: '#92400e',
+                            900: '#78350f',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <!-- Google Fonts: Plus Jakarta Sans, Lora & Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lora:ital,wght@0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons -->
@@ -478,87 +505,115 @@
         // -------------------------------------------------------------
         // 3. JELAJAH OSING — REAL GPS COORDINATES IN DESA KEMIREN, BANYUWANGI
         // -------------------------------------------------------------
-        const KEMIREN_CENTER = [-8.2038, 114.3215];
+        const KEMIREN_CENTER = [-8.2035, 114.3248];
         const MAP_SPOTS = [
             {
                 id: 'spot-1',
-                name: 'Kebun TOGA Utama Kemiren',
+                name: 'Kebun TOGA Induk Kemiren',
+                subtitle: 'Pusat Koleksi Rimpang & Daun Obat',
                 category: 'Kebun TOGA',
                 lat: -8.2035,
-                lng: 114.3212,
+                lng: 114.3248,
                 icon: 'fa-seedling',
                 pinColor: '#15803d',
-                distance: '0 m (Titik Mulai Rute)',
-                duration: '15 Menit',
+                distance: '0 m (Titik Mulai Tur)',
+                duration: '10 Menit',
                 hours: '07.30 – 16.30 WIB',
                 manager: 'Kelompok Tani Wanita (KWT) Srikandi Osing',
                 plants: ['Kunir Pethak', 'Temulawak', 'Jahe Merah', 'Kembang Telang'],
+                linkedPlantId: 'kunir-putih',
                 activity: 'Koleksi inti 42 spesies tanaman obat masyarakat Osing lengkap dengan papan QR Code edukasi morfologi dan manfaat etnobotani.',
                 qrCode: 'QR-LOC-01'
             },
             {
                 id: 'spot-2',
-                name: 'Sanggar Genjah Arum & Edukasi Kopi/Herbal',
+                name: 'Sanggar Olah Jamu Osing Mbok Sulastri',
+                subtitle: 'Demonstrasi Ekstraksi & Jamu Tradisional',
                 category: 'Sanggar/Edukasi',
-                lat: -8.2046,
-                lng: 114.3198,
-                icon: 'fa-mug-hot',
+                lat: -8.2022,
+                lng: 114.3232,
+                icon: 'fa-mortar-pestle',
                 pinColor: '#b45309',
-                distance: '210 m dari Titik 1',
-                duration: '20 Menit',
-                hours: '08.00 – 17.00 WIB',
-                manager: 'Komunitas Adat & Sanggar Budaya Kemiren',
-                plants: ['Serai Wangi', 'Jahe Merah', 'Kayu Manis', 'Kopi Kemiren'],
-                activity: 'Wisata edukasi arsitektur rumah adat Osing Tikel Balung, racikan kopi rempah herbal, dan demonstrasi penyeduhan tradisional.',
+                distance: '240 m dari Titik 1',
+                duration: '8 Menit',
+                hours: '08.00 – 16.30 WIB',
+                manager: 'Mbok Sulastri & Sanggar Budaya Kemiren',
+                plants: ['Temulawak', 'Kunir Pethak', 'Asam Jawa', 'Kencur'],
+                linkedPlantId: 'temulawak',
+                activity: 'Demonstrasi langsung pemarutan, ekstraksi sari rimpang segar dengan gerabah tanah liat, dan penyajian jamu cekok khas masyarakat Osing.',
                 qrCode: 'QR-LOC-02'
             },
             {
                 id: 'spot-3',
-                name: 'Sentra Pengolahan Jamu & Rempah Osing',
-                category: 'UMKM/Pengolahan',
-                lat: -8.2024,
-                lng: 114.3231,
-                icon: 'fa-mortar-pestle',
-                pinColor: '#0369a1',
-                distance: '430 m dari Titik 2',
-                duration: '20 Menit',
-                hours: '08.00 – 16.00 WIB',
-                manager: 'Dapur Herbal Mbok Yem & Kader Sehat Osing',
-                plants: ['Kunir Pethak', 'Temulawak', 'Asam Jawa', 'Kencur'],
-                activity: 'Demonstrasi langsung sortasi rimpang segar, pengeringan higienis Solar Dome Dryer, hingga perebusan jamu tradisional Osing.',
+                name: 'Taman Edukasi Etno-Botani Barong',
+                subtitle: 'Kebun Konservasi Tanaman Ritual & Obat',
+                category: 'Sanggar/Edukasi',
+                lat: -8.2048,
+                lng: 114.3262,
+                icon: 'fa-spa',
+                pinColor: '#047857',
+                distance: '420 m dari Titik 2',
+                duration: '6 Menit',
+                hours: '07.30 – 17.00 WIB',
+                manager: 'Komunitas Adat & Pemangku Budaya Osing',
+                plants: ['Serai Wangi', 'Jahe Merah', 'Kembang Telang', 'Sirih Merah'],
+                linkedPlantId: 'jahe-merah',
+                activity: 'Kebun konservasi tanaman yang berkaitan dengan tradisi ritual Barong Ider Bumi, ramuan mandi uap (timung), dan penghangat penari adat.',
                 qrCode: 'QR-LOC-03'
             },
             {
                 id: 'spot-4',
-                name: 'Kebun Konservasi Rimpang & Telang Dusun Krajan',
-                category: 'Kebun TOGA',
-                lat: -8.2052,
-                lng: 114.3228,
-                icon: 'fa-leaf',
-                pinColor: '#166534',
-                distance: '320 m dari Titik 3',
-                duration: '15 Menit',
-                hours: '07.00 – 16.30 WIB',
-                manager: 'Kelompok Tani Subak Krajan Wetan',
-                plants: ['Godong Kelor', 'Kembang Telang', 'Kunir Pethak', 'Sirih Merah'],
-                activity: 'Demplot budidaya organik pekarangan, lorong rambatan bunga telang biru, dan praktik pengomposan limbah herbal sirkular.',
+                name: 'UMKM & Rumah Produksi HerbaGuard Kemiren',
+                subtitle: 'Pengolahan & Pengemasan Terstandar',
+                category: 'UMKM/Pengolahan',
+                lat: -8.2015,
+                lng: 114.3268,
+                icon: 'fa-shield-halved',
+                pinColor: '#0369a1',
+                distance: '380 m dari Titik 3',
+                duration: '5 Menit',
+                hours: '08.00 – 16.00 WIB',
+                manager: 'UMKM Sekar Osing Herbal & Kader Mutu',
+                plants: ['Kunir Pethak', 'Jahe Merah', 'Serai Wangi'],
+                linkedPlantId: 'serai-wangi',
+                activity: 'Fasilitas pengeringan higienis Solar Dome Dryer, pengujian kadar air simplisia, dan pelabelan QR Code ketertelusuran batch HerbaGuard.',
                 qrCode: 'QR-LOC-04'
             },
             {
                 id: 'spot-5',
-                name: 'Galeri UMKM & Pasar Oleh-Oleh Osing',
+                name: 'Kebun Komunitas GreenHub KWT Osing',
+                subtitle: 'Demplot Budidaya Organik & Kompos',
+                category: 'Kebun TOGA',
+                lat: -8.2056,
+                lng: 114.3225,
+                icon: 'fa-leaf',
+                pinColor: '#166534',
+                distance: '520 m dari Titik 4',
+                duration: '4 Menit',
+                hours: '07.00 – 16.30 WIB',
+                manager: 'Kelompok Tani Subak & KWT Osing Kemiren',
+                plants: ['Godong Kelor', 'Kembang Telang', 'Kunir Pethak'],
+                linkedPlantId: 'daun-kelor',
+                activity: 'Demplot budidaya daun kelor organik pekarangan, lorong rambatan bunga telang biru, dan instalasi pengomposan limbah ampas herbal.',
+                qrCode: 'QR-LOC-05'
+            },
+            {
+                id: 'spot-6',
+                name: 'Galeri Pasar Osing & Kedai Wedang Rempah',
+                subtitle: 'Pusat Oleh-Oleh & Edukasi Wisatawan',
                 category: 'UMKM/Pengolahan',
-                lat: -8.2030,
-                lng: 114.3204,
+                lat: -8.2039,
+                lng: 114.3215,
                 icon: 'fa-store',
                 pinColor: '#be123c',
-                distance: '360 m dari Titik 4',
-                duration: '15 Menit',
-                hours: '08.00 – 17.30 WIB',
+                distance: '240 m dari Titik 5 (Total ± 1,8 km)',
+                duration: '2 Menit (Titik Akhir Tur)',
+                hours: '08.00 – 18.00 WIB',
                 manager: 'Koperasi Hijau Kemiren Berdaya',
-                plants: ['Serbuk Kunir Putih', 'Teh Kelor Serai', 'Wedang Jae Abang'],
-                activity: 'Pusat oleh-oleh herbal terverifikasi HerbaGuard QR, uji cicip minuman herbal sehat, dan pemesanan langsung produk UMKM warga.',
-                qrCode: 'QR-LOC-05'
+                plants: ['Kembang Telang', 'Wedang Jae Abang', 'Teh Kelor Serai'],
+                linkedPlantId: 'telang',
+                activity: 'Pusat oleh-oleh herbal terverifikasi HerbaGuard QR, uji cicip seduhan teh telang & wedang rempah, serta gerai belanja UMKM Kemiren.',
+                qrCode: 'QR-LOC-06'
             }
         ];
 
@@ -1034,6 +1089,163 @@
         }
 
         // =============================================================
+        // VIEW 2: OSINGPEDIA (Digital Ethnobotanical Knowledge Center)
+        // =============================================================
+        function renderOsingpedia() {
+            const parts = ['Semua', 'Rimpang', 'Daun', 'Bunga'];
+            const filtered = PLANTS.filter(p => {
+                const matchPart = state.plantFilter === 'Semua' || p.part === state.plantFilter;
+                const q = state.plantSearch.toLowerCase();
+                const matchQuery = !q ||
+                    p.localName.toLowerCase().includes(q) ||
+                    p.osingName.toLowerCase().includes(q) ||
+                    p.scientificName.toLowerCase().includes(q) ||
+                    p.metabolites.some(m => m.toLowerCase().includes(q)) ||
+                    p.traditionalUse.toLowerCase().includes(q);
+                return matchPart && matchQuery;
+            });
+
+            return `
+                <div class="bg-white rounded-3xl p-5 sm:p-6 border border-slate-200 shadow-xs mb-6">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
+                        <div>
+                            <span class="text-xs font-extrabold text-osing-700 uppercase tracking-wider">Core Innovation 1 • Digital Ethnobotanical Knowledge Center</span>
+                            <h1 class="text-2xl font-extrabold text-slate-900 mt-0.5">OSINGPEDIA</h1>
+                            <p class="text-sm text-slate-600">Katalog terverifikasi tanaman obat masyarakat Osing Desa Kemiren beserta morfologi, metabolit sekunder, dan tutur narasumber adat.</p>
+                        </div>
+                        <div class="relative w-full md:w-72">
+                            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3 text-slate-400 text-sm"></i>
+                            <input type="text" value="${state.plantSearch}" oninput="state.plantSearch=this.value; refreshCurrentView();"
+                                placeholder="Filter nama lokal / latin / senyawa..."
+                                class="w-full pl-9 pr-8 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs font-semibold focus:outline-none focus:border-osing-600">
+                            ${state.plantSearch ? `<button onclick="state.plantSearch=''; refreshCurrentView();" class="absolute right-2.5 top-2.5 text-slate-400 hover:text-slate-600"><i class="fa-solid fa-circle-xmark"></i></button>` : ''}
+                        </div>
+                    </div>
+
+                    <!-- Plant Part Filter Pills -->
+                    <div class="flex items-center gap-2 overflow-x-auto no-scrollbar">
+                        <span class="text-xs font-semibold text-slate-500 mr-1 shrink-0">Bagian Dimanfaatkan:</span>
+                        ${parts.map(pt => `
+                            <button onclick="state.plantFilter='${pt}'; refreshCurrentView();"
+                                class="px-4 py-1.5 rounded-full text-xs font-bold transition shrink-0 ${state.plantFilter === pt ? 'bg-osing-800 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}">
+                                ${pt}
+                            </button>
+                        `).join('')}
+                    </div>
+                </div>
+
+                ${filtered.length === 0 ? `
+                    <div class="bg-white rounded-3xl p-10 text-center border border-slate-200">
+                        <i class="fa-solid fa-seedling text-4xl text-slate-300 mb-3"></i>
+                        <h3 class="font-bold text-slate-800">Tanaman tidak ditemukan</h3>
+                        <p class="text-xs text-slate-500 mt-1 mb-4">Coba ubah kata kunci pencarian atau atur ulang filter bagian tanaman.</p>
+                        <button onclick="state.plantSearch=''; state.plantFilter='Semua'; refreshCurrentView();" class="px-4 py-2 rounded-xl bg-osing-800 text-white text-xs font-bold">Reset Pencarian</button>
+                    </div>
+                ` : `
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                        ${filtered.map(p => `
+                            <div class="bg-white rounded-3xl border border-slate-200/90 overflow-hidden shadow-xs hover:shadow-md transition flex flex-col justify-between group">
+                                <div>
+                                    <div class="relative h-44 bg-gradient-to-br ${p.colorTheme} overflow-hidden">
+                                        <img src="${p.image}" alt="${p.localName}" onerror="this.style.display='none'"
+                                            class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-slate-900/20 to-transparent"></div>
+                                        <div class="absolute top-3 left-3 flex items-center gap-1.5">
+                                            <span class="px-2.5 py-1 rounded-lg bg-white/95 text-slate-900 text-[10px] font-extrabold shadow-xs">${p.part}</span>
+                                            <span class="px-2.5 py-1 rounded-lg bg-osing-900/90 text-kunir-300 text-[10px] font-bold">Osing: ${p.osingName}</span>
+                                        </div>
+                                        <div class="absolute bottom-3 left-4 right-4 text-white">
+                                            <h3 class="font-extrabold text-base leading-snug">${p.localName}</h3>
+                                            <p class="text-[11px] italic text-slate-200">${p.scientificName} • ${p.family}</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="p-5">
+                                        <p class="text-xs text-slate-600 line-clamp-3 leading-relaxed mb-3">${p.traditionalUse}</p>
+                                        <div class="flex flex-wrap gap-1.5">
+                                            ${p.metabolites.slice(0, 3).map(m => `<span class="px-2 py-0.5 rounded-md bg-osing-50 text-osing-800 border border-osing-200/80 text-[10px] font-semibold">${m}</span>`).join('')}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="px-5 pb-5 pt-2 flex items-center gap-2">
+                                    <button onclick="openPlantDetail('${p.id}')" class="flex-1 py-2.5 px-3 rounded-xl bg-osing-800 hover:bg-osing-900 text-white text-xs font-bold flex items-center justify-center gap-1.5 transition">
+                                        <i class="fa-solid fa-book-open"></i> Detail Etnobotani
+                                    </button>
+                                    <button onclick="state.sciencePlantId='${p.id}'; navigateTo('herbascience');" class="py-2.5 px-3 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-800 border border-blue-200 text-xs font-bold" title="Lihat Bukti Fitokimia">
+                                        <i class="fa-solid fa-flask"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                `}
+            `;
+        }
+
+        function openPlantDetail(plantId) {
+            const p = PLANTS.find(item => item.id === plantId) || PLANTS[0];
+            openModal(`
+                <div class="space-y-4">
+                    <div class="flex items-start justify-between gap-3">
+                        <div>
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="px-2.5 py-0.5 rounded-md bg-osing-100 text-osing-800 text-[11px] font-extrabold">Osing: ${p.osingName}</span>
+                                <span class="px-2.5 py-0.5 rounded-md bg-amber-100 text-amber-800 text-[11px] font-bold">Bagian: ${p.part}</span>
+                            </div>
+                            <h3 class="text-xl font-extrabold text-slate-900">${p.localName}</h3>
+                            <p class="text-xs italic text-slate-500">${p.scientificName} — Famili ${p.family}</p>
+                        </div>
+                        <button onclick="closeModal()" class="w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+
+                    <div class="h-44 sm:h-52 rounded-2xl overflow-hidden bg-gradient-to-br ${p.colorTheme} relative">
+                        <img src="${p.image}" alt="${p.localName}" onerror="this.style.display='none'" class="w-full h-full object-cover">
+                    </div>
+
+                    <div class="space-y-3 text-xs sm:text-sm">
+                        <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/80">
+                            <div class="text-xs font-extrabold text-slate-800 uppercase mb-1">Karakteristik Morfologi</div>
+                            <p class="text-slate-600 leading-relaxed">${p.morphology}</p>
+                        </div>
+
+                        <div class="p-3.5 rounded-2xl bg-osing-50/70 border border-osing-200">
+                            <div class="text-xs font-extrabold text-osing-900 uppercase mb-1">Pemanfaatan Tradisional Masyarakat Osing</div>
+                            <p class="text-slate-700 leading-relaxed">${p.traditionalUse}</p>
+                        </div>
+
+                        <div class="p-3.5 rounded-2xl bg-amber-50/80 border border-amber-200">
+                            <div class="text-xs font-extrabold text-amber-900 uppercase mb-1"><i class="fa-solid fa-quote-left mr-1"></i> Tutur Pengetahuan Lokal & Tokoh Adat</div>
+                            <p class="text-slate-700 italic leading-relaxed">${p.elderLore}</p>
+                        </div>
+
+                        <div>
+                            <div class="text-xs font-extrabold text-slate-800 uppercase mb-1.5">Kandungan Metabolit Sekunder</div>
+                            <div class="flex flex-wrap gap-1.5">
+                                ${p.metabolites.map(m => `<span class="px-2.5 py-1 rounded-lg bg-blue-50 text-blue-800 border border-blue-200 text-xs font-bold">${m}</span>`).join('')}
+                            </div>
+                        </div>
+
+                        <div class="p-3.5 rounded-2xl bg-rose-50/80 border border-rose-200 text-xs text-rose-900">
+                            <strong><i class="fa-solid fa-circle-info mr-1"></i> Keamanan & Batasan:</strong> ${p.safetyNotes}
+                        </div>
+                    </div>
+
+                    <div class="pt-2 flex flex-col sm:flex-row gap-2">
+                        <button onclick="closeModal(); state.sciencePlantId='${p.id}'; navigateTo('herbascience');" class="flex-1 py-3 px-4 rounded-xl bg-blue-700 hover:bg-blue-800 text-white text-xs font-bold flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-flask-vial"></i> Kajian Fitokimia (HerbaScience)
+                        </button>
+                        <button onclick="closeModal(); state.interactionPlantId='${p.id}'; navigateTo('sehat');" class="flex-1 py-3 px-4 rounded-xl bg-osing-800 hover:bg-osing-900 text-white text-xs font-bold flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-stethoscope"></i> Cek Interaksi Obat (Sehat Osing)
+                        </button>
+                    </div>
+                </div>
+            `);
+        }
+
+        // =============================================================
         // VIEW 3: JELAJAH OSING (Real Leaflet.js + OSM/Satellite Map)
         // =============================================================
         function renderJelajah() {
@@ -1047,7 +1259,7 @@
                         <div>
                             <span class="text-xs font-extrabold text-osing-700 uppercase tracking-wider">Core Innovation 2 • Interactive Herbal & Cultural Tourism Map</span>
                             <h1 class="text-2xl font-extrabold text-slate-900 mt-0.5">JELAJAH OSING — Peta Asli Desa Kemiren</h1>
-                            <p class="text-sm text-slate-600">Peta interaktif nyata Desa Adat Kemiren, Kec. Glagah, Banyuwangi. Klik pin lokasi untuk melihat koleksi TOGA, rute jalan kaki, dan QR edukasi.</p>
+                            <p class="text-sm text-slate-600">Peta interaktif nyata Desa Wisata Adat Kemiren, Kec. Glagah, Kabupaten Banyuwangi. Klik pin lokasi untuk melihat rute jalan kaki herbal dan QR edukasi.</p>
                         </div>
                         <div class="flex flex-wrap items-center gap-2 shrink-0">
                             <button onclick="openQrSimulator()" class="px-4 py-2.5 rounded-xl bg-osing-800 hover:bg-osing-900 text-white text-xs font-bold flex items-center justify-center gap-2 shadow">
@@ -1073,15 +1285,15 @@
                     <div class="lg:col-span-7 bg-white rounded-3xl p-4 sm:p-5 border border-slate-200 shadow-xs flex flex-col">
                         <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
                             <div class="flex items-center gap-2">
-                                <span class="w-2.5 h-2.5 rounded-full bg-osing-600 animate-pulse"></span>
-                                <span class="text-xs font-extrabold text-slate-800">Rute Edukasi Herbal (Est. 1,32 km • 85 Menit)</span>
+                                <span class="w-2.5 h-2.5 rounded-full bg-emerald-600 animate-pulse"></span>
+                                <span class="text-xs font-extrabold text-slate-800">Rute Tur Jalan Kaki Herbal (± 1,8 km • ± 35 Menit)</span>
                             </div>
                             <!-- Map Layer & Reset Controls -->
                             <div class="flex items-center gap-1.5">
                                 <button onclick="toggleKemirenMapLayer()" id="btnToggleMapLayer"
                                     class="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold flex items-center gap-1.5 border border-slate-200 transition">
                                     <i class="fa-solid ${state.mapLayerMode === 'osm' ? 'fa-satellite' : 'fa-map'} text-osing-700"></i>
-                                    <span>${state.mapLayerMode === 'osm' ? 'Tampilan Satelit' : 'Peta Jalan OSM'}</span>
+                                    <span>${state.mapLayerMode === 'osm' ? 'Citra Satelit' : 'Peta Jalan OSM'}</span>
                                 </button>
                                 <button onclick="resetKemirenMapView()"
                                     class="px-3 py-1.5 rounded-xl bg-osing-50 hover:bg-osing-100 text-osing-800 text-xs font-bold flex items-center gap-1.5 border border-osing-200 transition" title="Pusatkan ke Desa Kemiren">
@@ -1092,17 +1304,17 @@
                         </div>
 
                         <!-- Leaflet Map Mount Div -->
-                        <div class="relative w-full h-80 sm:h-[420px] rounded-2xl overflow-hidden border-2 border-osing-200 shadow-inner bg-slate-100">
+                        <div class="relative w-full h-80 sm:h-[430px] rounded-2xl overflow-hidden border-2 border-osing-200 shadow-inner bg-slate-100">
                             <div id="kemirenRealMap" class="w-full h-full"></div>
                             <!-- Floating Coordinate Badge -->
                             <div class="absolute bottom-2.5 left-2.5 z-20 bg-white/95 backdrop-blur-xs px-2.5 py-1 rounded-lg border border-slate-200 text-[10px] font-mono font-bold text-slate-700 shadow-xs pointer-events-none">
-                                <i class="fa-solid fa-location-dot text-osing-700 mr-1"></i>Desa Kemiren (-8.2038, 114.3215)
+                                <i class="fa-solid fa-location-dot text-osing-700 mr-1"></i>Desa Kemiren (-8.2035, 114.3248)
                             </div>
                         </div>
 
                         <!-- Horizontal Route Stepper List -->
                         <div class="mt-4">
-                            <div class="text-[11px] font-bold text-slate-500 uppercase mb-2">Daftar Titik Lokasi Wisata Edukasi (${visibleSpots.length} Titik):</div>
+                            <div class="text-[11px] font-bold text-slate-500 uppercase mb-2">6 Titik Lokasi Wisata Edukasi (${visibleSpots.length} Ditampilkan):</div>
                             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
                                 ${visibleSpots.map((spot) => {
                                     const realIdx = MAP_SPOTS.findIndex(s => s.id === spot.id);
@@ -1138,12 +1350,13 @@
             return `
                 <div>
                     <div class="flex items-center justify-between gap-2 mb-3">
-                        <span class="px-3 py-1 rounded-full bg-kunir-100 text-kunir-800 text-xs font-extrabold">Titik #${spotIndex} • ${activeSpot.category}</span>
+                        <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-900 text-xs font-extrabold">Titik #${spotIndex} • ${activeSpot.category}</span>
                         <span class="text-xs font-bold text-slate-500"><i class="fa-solid fa-route text-osing-600 mr-1"></i>${activeSpot.distance}</span>
                     </div>
-                    <h2 class="text-xl font-extrabold text-slate-900 mb-1">${activeSpot.name}</h2>
+                    <h2 class="text-xl font-extrabold text-slate-900 mb-0.5">${activeSpot.name}</h2>
+                    <div class="text-xs font-bold text-osing-700 mb-1">${activeSpot.subtitle}</div>
                     <div class="text-[11px] font-mono text-slate-500 mb-3">
-                        GPS: ${activeSpot.lat.toFixed(4)}, ${activeSpot.lng.toFixed(4)} • Desa Kemiren, Banyuwangi
+                        GPS: ${activeSpot.lat.toFixed(4)}, ${activeSpot.lng.toFixed(4)} • Desa Adat Kemiren, Glagah
                     </div>
                     <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">${activeSpot.activity}</p>
 
@@ -1153,7 +1366,7 @@
                             <span class="font-bold text-slate-800">${activeSpot.hours}</span>
                         </div>
                         <div class="flex justify-between">
-                            <span class="text-slate-500">Estimasi Kunjungan:</span>
+                            <span class="text-slate-500">Estimasi Waktu Tur:</span>
                             <span class="font-bold text-osing-700">${activeSpot.duration}</span>
                         </div>
                         <div class="pt-2 border-t border-slate-200">
@@ -1163,7 +1376,7 @@
                     </div>
 
                     <div class="mb-5">
-                        <div class="text-xs font-extrabold text-slate-800 uppercase mb-2">Tanaman Unggulan & Fokus Edukasi:</div>
+                        <div class="text-xs font-extrabold text-slate-800 uppercase mb-2">Koleksi Tanaman Utama & Fokus Edukasi:</div>
                         <div class="flex flex-wrap gap-1.5">
                             ${activeSpot.plants.map(pl => `<span class="px-2.5 py-1 rounded-lg bg-osing-50 text-osing-800 border border-osing-200 text-xs font-semibold">${pl}</span>`).join('')}
                         </div>
@@ -1171,22 +1384,28 @@
                 </div>
 
                 <div class="space-y-2">
+                    <button onclick="openSpotQrPlantModal('${activeSpot.id}')"
+                        class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-osing-700 to-osing-900 hover:from-osing-800 hover:to-osing-950 text-white text-xs font-bold flex items-center justify-center gap-2 transition shadow">
+                        <i class="fa-solid fa-qrcode text-kunir-300"></i> Simulasi Scan QR Titik Edukasi (${activeSpot.qrCode})
+                    </button>
                     <div class="flex gap-2">
                         <a href="${gmapsUrl}" target="_blank" rel="noopener noreferrer"
-                            class="flex-1 py-3 px-4 rounded-xl bg-osing-800 hover:bg-osing-900 text-white text-xs font-bold flex items-center justify-center gap-2 transition shadow-xs">
-                            <i class="fa-solid fa-diamond-turn-right"></i> Rute Google Maps
+                            class="flex-1 py-2.5 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold flex items-center justify-center gap-1.5 transition">
+                            <i class="fa-solid fa-diamond-turn-right text-osing-700"></i> Google Maps
                         </a>
-                        <button onclick="openQrSimulator('${activeSpot.qrCode}')"
-                            class="py-3 px-4 rounded-xl bg-kunir-100 hover:bg-kunir-200 text-kunir-900 text-xs font-bold flex items-center justify-center gap-1.5 transition">
-                            <i class="fa-solid fa-qrcode"></i> Scan QR Titik
+                        <button onclick="highlightRouteOnMap('${activeSpot.id}')"
+                            class="flex-1 py-2.5 px-3 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-900 border border-emerald-200 text-xs font-bold flex items-center justify-center gap-1.5 transition">
+                            <i class="fa-solid fa-magnifying-glass-location"></i> Fokus di Peta
                         </button>
                     </div>
-                    <button onclick="highlightRouteOnMap('${activeSpot.id}')"
-                        class="w-full py-2.5 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold flex items-center justify-center gap-1.5 transition">
-                        <i class="fa-solid fa-magnifying-glass-location text-osing-700"></i> Sorot Titik Ini di Peta
-                    </button>
                 </div>
             `;
+        }
+
+        function openSpotQrPlantModal(spotId) {
+            const spot = MAP_SPOTS.find(s => s.id === spotId) || MAP_SPOTS[0];
+            showToast(`Memindai ${spot.qrCode} di ${spot.name}...`);
+            openPlantDetail(spot.linkedPlantId);
         }
 
         function initKemirenLeafletMap() {
@@ -1243,13 +1462,13 @@
 
             const visibleSpots = MAP_SPOTS.filter(s => state.mapCategoryFilter === 'Semua' || s.category === state.mapCategoryFilter);
 
-            // Draw Walking Route Polyline connecting all 5 spots in order
+            // Draw Walking Route Polyline connecting all 6 spots in order (Emerald Green dashed line)
             const fullRouteCoords = MAP_SPOTS.map(s => [s.lat, s.lng]);
             kemirenRoutePolyline = L.polyline(fullRouteCoords, {
-                color: '#d97706',
-                weight: 4,
-                opacity: 0.85,
-                dashArray: '8, 8'
+                color: '#059669',
+                weight: 4.5,
+                opacity: 0.9,
+                dashArray: '10, 8'
             }).addTo(kemirenMarkersLayer);
 
             // Add Custom HTML Markers for Visible Spots
@@ -1261,12 +1480,12 @@
                     className: 'custom-kemiren-marker',
                     html: `
                         <div style="transform: translate(-50%, -100%);" class="flex flex-col items-center cursor-pointer">
-                            <div style="background-color: ${isSelected ? '#f59e0b' : spot.pinColor}; color: ${isSelected ? '#052e16' : '#ffffff'};"
-                                class="px-2.5 py-1 rounded-xl shadow-lg border-2 border-white flex items-center gap-1.5 whitespace-nowrap font-extrabold text-[11px] transition-transform ${isSelected ? 'scale-110' : ''}">
+                            <div style="background-color: ${isSelected ? '#059669' : spot.pinColor}; color: #ffffff;"
+                                class="px-2.5 py-1 rounded-xl shadow-lg border-2 ${isSelected ? 'border-amber-300 ring-2 ring-emerald-500/50 scale-110' : 'border-white'} flex items-center gap-1.5 whitespace-nowrap font-extrabold text-[11px] transition-transform">
                                 <span>${idx}.</span>
                                 <i class="fa-solid ${spot.icon}"></i>
                             </div>
-                            <div style="border-top-color: ${isSelected ? '#f59e0b' : spot.pinColor};"
+                            <div style="border-top-color: ${isSelected ? '#059669' : spot.pinColor};"
                                 class="w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[7px]"></div>
                         </div>
                     `,
@@ -1277,19 +1496,20 @@
                 const marker = L.marker([spot.lat, spot.lng], { icon: customIcon }).addTo(kemirenMarkersLayer);
 
                 marker.bindPopup(`
-                    <div class="min-w-[200px]">
+                    <div class="min-w-[215px]">
                         <div class="text-[10px] font-extrabold uppercase text-emerald-700">${spot.category}</div>
                         <div class="font-extrabold text-sm text-slate-900 mt-0.5">${idx}. ${spot.name}</div>
-                        <div class="text-[11px] text-slate-600 mt-1">${spot.distance} • ${spot.duration}</div>
-                        <div class="mt-2 pt-2 border-t border-slate-100 flex items-center justify-between">
-                            <span class="text-[10px] font-semibold text-slate-500">${spot.plants.slice(0, 2).join(', ')}</span>
-                            <button onclick="openQrSimulator('${spot.qrCode}')" class="text-[11px] font-bold text-amber-700 hover:underline">Scan QR</button>
+                        <div class="text-[11px] font-semibold text-slate-700">${spot.subtitle}</div>
+                        <div class="text-[11px] text-slate-500 mt-1">${spot.distance} • ${spot.duration}</div>
+                        <div class="mt-2 pt-2 border-t border-slate-100 flex items-center justify-between gap-2">
+                            <span class="text-[10px] font-semibold text-slate-500 truncate">${spot.plants.slice(0, 2).join(', ')}</span>
+                            <button onclick="openSpotQrPlantModal('${spot.id}')" class="text-[11px] font-bold text-emerald-700 hover:underline shrink-0">Scan QR</button>
                         </div>
                     </div>
                 `);
 
                 marker.on('click', () => {
-                    selectKemirenSpot(spot.id, false);
+                    selectKemirenSpot(spot.id, true);
                 });
 
                 kemirenMarkerRefs[spot.id] = marker;
@@ -1332,10 +1552,10 @@
             if (btn) {
                 btn.innerHTML = `
                     <i class="fa-solid ${state.mapLayerMode === 'osm' ? 'fa-satellite' : 'fa-map'} text-osing-700"></i>
-                    <span>${state.mapLayerMode === 'osm' ? 'Tampilan Satelit' : 'Peta Jalan OSM'}</span>
+                    <span>${state.mapLayerMode === 'osm' ? 'Citra Satelit' : 'Peta Jalan OSM'}</span>
                 `;
             }
-            showToast(state.mapLayerMode === 'satellite' ? 'Beralih ke Citra Satelit Desa Kemiren' : 'Beralih ke Peta Jalan OpenStreetMap');
+            showToast(state.mapLayerMode === 'satellite' ? 'Beralih ke Citra Satelit Esri Desa Kemiren' : 'Beralih ke Peta Jalan OpenStreetMap');
         }
 
         function resetKemirenMapView() {
@@ -1983,7 +2203,7 @@
                         </button>
                         <button onclick="closeModal(); state.selectedSpotId='spot-2'; navigateTo('jelajah');" class="p-3 rounded-xl border border-blue-200 bg-blue-50 hover:bg-blue-100 text-left">
                             <div class="text-[10px] font-extrabold text-blue-800">QR TITIK WISATA EDUKASI</div>
-                            <div class="text-xs font-bold text-slate-900 mt-0.5">Sanggar Genjah Arum & Kopi Herbal</div>
+                            <div class="text-xs font-bold text-slate-900 mt-0.5">Sanggar Olah Jamu Mbok Sulastri</div>
                         </button>
                     </div>
                 </div>
