@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desa Toga Kemiren | Digital Ethnobotanical Platform</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            900: '#14532d',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .feature-card:hover { transform: translateY(-5px); transition: all 0.3s ease; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- Navigation -->
+    <nav class="bg-white/90 backdrop-blur-md fixed w-full z-50 top-0 shadow-sm border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex-shrink-0 flex items-center gap-2">
+                    <i class="fa-solid fa-leaf text-brand-600 text-2xl"></i>
+                    <span class="font-bold text-xl text-brand-900">TOGA KEMIREN</span>
+                </div>
+                <div class="hidden md:flex space-x-6 text-sm font-medium">
+                    <a href="#beranda" class="text-brand-600 hover:text-brand-700">Beranda</a>
+                    <a href="#unggulan" class="text-slate-600 hover:text-brand-600">Inovasi</a>
+                    <a href="#fitur" class="text-slate-600 hover:text-brand-600">Fitur Ekosistem</a>
+                    <a href="#menu" class="text-slate-600 hover:text-brand-600">Struktur Menu</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="beranda" class="pt-28 pb-16 bg-gradient-to-br from-brand-900 to-brand-700 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-12">
+            <div class="md:w-1/2 space-y-6">
+                <span class="inline-block py-1 px-3 rounded-full bg-brand-500/30 text-brand-100 text-sm font-semibold tracking-wide border border-brand-500/50">
+                    Digital Ethnobotanical Health, Heritage & Green Economy
+                </span>
+                <h1 class="text-4xl md:text-5xl font-bold leading-tight">
+                    DESA TOGA KEMIREN
+                </h1>
+                <p class="text-lg text-brand-100 leading-relaxed">
+                    Platform digital terintegrasi yang menggabungkan pelestarian pengetahuan tanaman obat masyarakat Osing, dokumentasi etnobotani, kajian ilmiah, wisata edukasi, dan ekonomi hijau.
+                </p>
+                <div class="pt-4 border-t border-brand-600/50">
+                    <p class="font-medium italic">"Melestarikan Tanaman Obat, Merawat Warisan Osing, Membangun Kemiren Berdaya."</p>
+                    <p class="text-sm text-brand-200 italic mt-1">"Preserving Herbal Heritage, Connecting Science, Empowering Kemiren."</p>
+                </div>
+            </div>
+            <div class="md:w-1/2">
+                <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Herbal Plants" class="rounded-2xl shadow-2xl border-4 border-brand-500/20 object-cover h-96 w-full">
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Innovation Section -->
+    <section id="unggulan" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-brand-900">Fitur Unggulan (Core Innovation)</h2>
+                <p class="mt-4 text-slate-600 max-w-2xl mx-auto">Tiga pilar utama yang menjadikan DESA TOGA KEMIREN sebagai platform inovatif dan komprehensif.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Core 1 -->
+                <div class="feature-card bg-slate-50 rounded-2xl p-8 border border-slate-100 shadow-sm">
+                    <div class="w-14 h-14 bg-brand-100 rounded-xl flex items-center justify-center mb-6 text-brand-600 text-2xl">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-3">OSINGPEDIA</h3>
+                    <p class="text-slate-600 leading-relaxed">Basis data etnobotani yang mendokumentasikan tanaman obat dan pengetahuan tradisional masyarakat Osing secara digital.</p>
+                </div>
+                <!-- Core 2 -->
+                <div class="feature-card bg-brand-600 rounded-2xl p-8 shadow-lg text-white transform scale-105">
+                    <div class="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center mb-6 text-white text-2xl">
+                        <i class="fa-solid fa-map-location-dot"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">JELAJAH OSING</h3>
+                    <p class="text-brand-50 leading-relaxed">Peta wisata edukasi yang menghubungkan informasi tanaman dengan lokasi dan pengalaman kunjungan secara langsung.</p>
+                </div>
+                <!-- Core 3 -->
+                <div class="feature-card bg-slate-50 rounded-2xl p-8 border border-slate-100 shadow-sm">
+                    <div class="w-14 h-14 bg-brand-100 rounded-xl flex items-center justify-center mb-6 text-brand-600 text-2xl">
+                        <i class="fa-solid fa-flask"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-3">HERBASCIENCE</h3>
+                    <p class="text-slate-600 leading-relaxed">Pusat informasi yang menghubungkan pengetahuan herbal tradisional dengan kandungan kimia dan bukti penelitian ilmiah.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7 Features Ecosystem -->
+    <section id="fitur" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-brand-900">Ekosistem Platform</h2>
+                <p class="mt-4 text-slate-600 max-w-2xl mx-auto">Tujuh fitur terintegrasi yang saling terhubung untuk membangun destinasi wisata edukasi dan ekonomi hijau.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 1 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                    <h3 class="text-lg font-bold text-brand-700 flex items-center gap-2 border-b pb-3 mb-4">
+                        <span class="bg-brand-100 text-brand-700 py-1 px-2 rounded text-sm">1</span> OSINGPEDIA
+                    </h3>
+                    <p class="text-sm font-semibold text-slate-800 mb-3">Digital Ethnobotanical Knowledge Center</p>
+                    <ul class="text-sm text-slate-600 space-y-2 list-disc pl-4">
+                        <li>Katalog tanaman obat terverifikasi</li>
+                        <li>Nama lokal, ilmiah, dan karakteristik</li>
+                        <li>Dokumentasi pemanfaatan tradisional</li>
+                        <li>Cerita dan pengetahuan tokoh adat</li>
+                    </ul>
+                </div>
+
+                <!-- 2 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                    <h3 class="text-lg font-bold text-brand-700 flex items-center gap-2 border-b pb-3 mb-4">
+                        <span class="bg-brand-100 text-brand-700 py-1 px-2 rounded text-sm">2</span> JELAJAH OSING
+                    </h3>
+                    <p class="text-sm font-semibold text-slate-800 mb-3">Interactive Herbal & Cultural Tourism Map</p>
+                    <ul class="text-sm text-slate-600 space-y-2 list-disc pl-4">
+                        <li>Peta digital kebun TOGA</li>
+                        <li>Rute wisata edukasi herbal</li>
+                        <li>Lokasi demonstrasi pengolahan</li>
+                        <li>QR Code di titik edukasi nyata</li>
+                    </ul>
+                </div>
+
+                <!-- 3 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                    <h3 class="text-lg font-bold text-brand-700 flex items-center gap-2 border-b pb-3 mb-4">
+                        <span class="bg-brand-100 text-brand-700 py-1 px-2 rounded text-sm">3</span> HERBASCIENCE
+                    </h3>
+                    <p class="text-sm font-semibold text-slate-800 mb-3">Traditional Knowledge Meets Science</p>
+                    <ul class="text-sm text-slate-600 space-y-2 list-disc pl-4">
+                        <li>Informasi fitokimia & senyawa bioaktif</li>
+                        <li>Ringkasan penelitian ilmiah</li>
+                        <li>Mekanisme biologis & jurnal (DOI)</li>
+                        <li>Klasifikasi tingkat bukti ilmiah</li>
+                    </ul>
+                </div>
+
+                <!-- 4 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                    <h3 class="text-lg font-bold text-brand-700 flex items-center gap-2 border-b pb-3 mb-4">
+                        <span class="bg-brand-100 text-brand-700 py-1 px-2 rounded text-sm">4</span> SEHAT OSING
+                    </h3>
+                    <p class="text-sm font-semibold text-slate-800 mb-3">Community Wellness Education</p>
+                    <ul class="text-sm text-slate-600 space-y-2 list-disc pl-4">
+                        <li>Edukasi PHBS & pencegahan penyakit</li>
+                        <li>Panduan pengolahan bahan herbal</li>
+                        <li>Potensi interaksi herbal & obat medis</li>
+                        <li>Informasi batasan & tanda bahaya</li>
+                    </ul>
+                </div>
+
+                <!-- 5 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                    <h3 class="text-lg font-bold text-brand-700 flex items-center gap-2 border-b pb-3 mb-4">
+                        <span class="bg-brand-100 text-brand-700 py-1 px-2 rounded text-sm">5</span> HERBAGUARD
+                    </h3>
+                    <p class="text-sm font-semibold text-slate-800 mb-3">Herbal Quality & Traceability System</p>
+                    <ul class="text-sm text-slate-600 space-y-2 list-disc pl-4">
+                        <li>Ketertelusuran asal bahan baku</li>
+                        <li>Parameter mutu & hasil lab</li>
+                        <li>Izin edar, sertifikasi & kedaluwarsa</li>
+                        <li>QR Code riwayat produk UMKM</li>
+                    </ul>
+                </div>
+
+                <!-- 6 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                    <h3 class="text-lg font-bold text-brand-700 flex items-center gap-2 border-b pb-3 mb-4">
+                        <span class="bg-brand-100 text-brand-700 py-1 px-2 rounded text-sm">6</span> OSING GREENHUB
+                    </h3>
+                    <p class="text-sm font-semibold text-slate-800 mb-3">Sustainable Farming & Empowerment</p>
+                    <ul class="text-sm text-slate-600 space-y-2 list-disc pl-4">
+                        <li>Direktori petani & kalender tanam</li>
+                        <li>Panduan penanaman TOGA</li>
+                        <li>Pemanfaatan limbah organik</li>
+                        <li>Peluang kemitraan UMKM</li>
+                    </ul>
+                </div>
+
+                <!-- 7 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                    <h3 class="text-lg font-bold text-brand-700 flex items-center gap-2 border-b pb-3 mb-4">
+                        <span class="bg-brand-100 text-brand-700 py-1 px-2 rounded text-sm">7</span> PASAR OSING
+                    </h3>
+                    <p class="text-sm font-semibold text-slate-800 mb-3">Local Herbal Product Marketplace</p>
+                    <ul class="text-sm text-slate-600 space-y-2 list-disc pl-4">
+                        <li>Katalog produk & oleh-oleh lokal</li>
+                        <li>Profil UMKM Desa Kemiren</li>
+                        <li>Fitur pemesanan langsung</li>
+                        <li>Transparansi bahan & pengolahan</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Table Section -->
+    <section id="menu" class="py-20 bg-white">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-brand-900">Susunan Menu Utama Platform</h2>
+            </div>
+            <div class="overflow-x-auto rounded-xl shadow-sm border border-slate-200">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-brand-50 text-brand-900 border-b border-brand-200">
+                            <th class="py-4 px-6 font-semibold">Menu</th>
+                            <th class="py-4 px-6 font-semibold">Fungsi</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-slate-600 divide-y divide-slate-100">
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="py-3 px-6 font-medium text-slate-800">Beranda</td>
+                            <td class="py-3 px-6">Informasi utama, aktivitas, dan pengenalan Desa TOGA Kemiren</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="py-3 px-6 font-medium text-slate-800">Osingpedia</td>
+                            <td class="py-3 px-6">Ensiklopedia tanaman obat dan pengetahuan etnobotani</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="py-3 px-6 font-medium text-slate-800">Jelajah Osing</td>
+                            <td class="py-3 px-6">Peta lokasi tanaman, kebun, dan wisata edukasi</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="py-3 px-6 font-medium text-slate-800">HerbaScience</td>
+                            <td class="py-3 px-6">Informasi fitokimia dan bukti ilmiah</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="py-3 px-6 font-medium text-slate-800">Sehat Osing</td>
+                            <td class="py-3 px-6">Edukasi kesehatan dan pemanfaatan herbal</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="py-3 px-6 font-medium text-slate-800">HerbaGuard</td>
+                            <td class="py-3 px-6">Informasi mutu dan ketertelusuran produk</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="py-3 px-6 font-medium text-slate-800">Osing GreenHub</td>
+                            <td class="py-3 px-6">Budidaya TOGA dan pemberdayaan masyarakat</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="py-3 px-6 font-medium text-slate-800">Pasar Osing</td>
+                            <td class="py-3 px-6">Katalog produk dan UMKM lokal</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-900 text-brand-100 py-12 border-t border-brand-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+            <div class="flex justify-center items-center gap-2 mb-4">
+                <i class="fa-solid fa-leaf text-brand-500 text-3xl"></i>
+                <span class="font-bold text-2xl text-white">DESA TOGA KEMIREN</span>
+            </div>
+            <p class="max-w-2xl mx-auto text-sm text-brand-200/80 leading-relaxed bg-brand-800/50 p-4 rounded-lg">
+                <strong class="text-white">Catatan Penting:</strong> Katalog tanaman, lokasi kebun, kandungan senyawa, dan informasi mutu produk diisi berdasarkan survei lapangan, dokumentasi masyarakat, serta sumber ilmiah yang dapat diverifikasi. Platform ini memiliki dasar etnobotani dan ilmiah yang kuat.
+            </p>
+            <p class="text-sm mt-8 pt-8 border-t border-brand-800">&copy; 2026 Desa Toga Kemiren. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
